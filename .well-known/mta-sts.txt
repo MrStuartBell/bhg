@@ -1,4 +1,0 @@
-version: STSv1
-mode: enforce # “testing” while you verify, then “enforce”
-mx: *.googlemail.com
-max_age: 86400
