@@ -1,0 +1,5 @@
+version: STSv1
+mode: testing # “testing” while you verify, then “enforce”
+mx: *.aspmx.l.google.com
+mx: *.googlemail.com
+max_age: 86400
