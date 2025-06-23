@@ -11,6 +11,7 @@ mx: alt1.aspmx.l.google.com
 mx: alt2.aspmx.l.google.com
 mx: alt3.aspmx.l.google.com
 mx: alt4.aspmx.l.google.com
+mx: smtp.google.com
 max_age: 86400`;
   
   return c.text(policy);
