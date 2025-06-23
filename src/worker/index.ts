@@ -1,8 +1,9 @@
 import { Hono } from "hono";
+import { serveStatic } from "hono/cloudflare-workers";
 
 const app = new Hono<{ Bindings: Env }>();
 
-// MTA-STS policy route
+// MTA-STS policy route - keep this FIRST
 app.get("/.well-known/mta-sts.txt", (c) => {
   const policy = `version: STSv1
 mode: enforce
@@ -15,7 +16,10 @@ max_age: 86400`;
   });
 });
 
-// Your existing API route
+// API route
 app.get("/api/", (c) => c.json({ name: "Cloudflare" }));
+
+// Serve static files from assets
+app.get("*", serveStatic());
 
 export default app;
