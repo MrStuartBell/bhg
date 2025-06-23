@@ -33,12 +33,43 @@
       box-shadow: rgba(0,0,0,0.08) 0 0 10px;
     }
     .card-hover {
-      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+      transition: box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out, transform 0.2s ease-in-out;
     }
     .card-hover:hover {
       border-color: #A74D4B !important;
       box-shadow: rgba(0,0,0,0.12) 0 4px 24px;
       transform: translateY(-2px) scale(1.03);
+    }
+    /* Specific styles for gallery images to ensure consistent behavior */
+    .gallery-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: rgba(0,0,0,0.08) 0 0 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: block;
+      object-fit: cover;
+    }
+    .gallery-image:hover {
+      box-shadow: rgba(0,0,0,0.12) 0 4px 24px;
+      transform: translateY(-2px) scale(1.03);
+    }
+    
+    /* Safari-specific fixes for aspect ratio */
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 125%; /* 4:5 aspect ratio (5/4 = 1.25) */
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .gallery-container .gallery-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
     }
     .btn {
       border-radius: 8px;
@@ -112,13 +143,22 @@
     .delay-700 { animation-delay: 0.7s;}
     .delay-800 { animation-delay: 0.8s;}
     .delay-900 { animation-delay: 0.9s;}
-    /* Responsive Masonry */
+    /* Responsive Masonry - temporarily disabled for testing */
     .masonry {
-      column-count: 1;
-      column-gap: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
     }
-    @media (min-width: 640px) {.masonry {column-count: 2;}}
-    @media (min-width: 1024px) {.masonry {column-count: 3;}}
+    @media (min-width: 640px) {
+      .masonry {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .masonry {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
     /* Hide scrollbar in carousels */
     .carousel-track::-webkit-scrollbar { display: none; }
     .carousel-track { scrollbar-width: none;}
@@ -171,144 +211,114 @@
   </h2><div class="flex flex-col sm:flex-row gap-4 w-full slide-up delay-400" style="flex-wrap: nowrap;">
     <a href="#call" class="btn btn-red flex-1 text-lg text-center" style="display:flex; align-items:center; justify-content:center;">15 min Client Finder Call</a>
     <a href="#download" class="btn btn-outline-red flex-1 text-lg text-center flex items-center justify-center">A Brutally Honest Guide™ To Using A Book To Get Clients</a>
-  </div><p class="text-lg font-normal text-[#818B7F] text-center mt-7"><b>Your unfair advantage:</b> a done-for-you book and funnel. <br>Built from our research and your words to create an irresistible lead magnet.<br>While others churn out generic AI content, you'll be connecting prospects with something real, so by the time they click, they're ready.</p></div>
+  </div><p class="text-lg font-normal text-[#818B7F] text-center mt-7"><b>Your unfair advantage:</b> A done-for-you book and funnel. <br>Built from our research and your words to create an irresistible lead magnet.<br>While others churn out generic AI content, you'll be connecting prospects with something real, so by the time they click, they're ready.</p></div>
   </section>
 
   <!-- CREDIBILITY BAR -->
   <section class="carousel-outer fade-in delay-500 pt-2 pb-2" style="border-bottom:1px solid #e2dfda; background-color:#818B7F;" aria-label="Industries Served">
   <h2 class="text-[1.875rem] font-normal text-[#FFFEFB] tracking-tight font-condensed text-center mb-4" style="font-family:'Inter Tight',Inter,Arial,sans-serif; padding-top:2%; padding-bottom:0;">A Book To Find Clients in Every Industry</h2>
   <div class="carousel-inner max-w-screen-xl overflow-hidden relative mr-auto ml-auto pr-4 pl-4" style="padding-top:3%; padding-bottom:3%;">
-    <div class="carousel-track flex w-max gap-[200px] animate-[carousel-scroll_linear_infinite] items-center" style="--carousel-shift: 1014.234375px; --carousel-duration: 23.236843149282787s; padding-top:1%; padding-bottom:2%;" tabindex="0" role="list">
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+    <div id="industryCarouselTrack" class="carousel-track flex gap-[80px] animate-[carousel-scroll_linear_infinite] items-center" style="padding-top:1%; padding-bottom:2%;" tabindex="0" role="list">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/engine.png" alt="Engineering" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Engineering</span>
+        <span class="text-[1.2rem] mt-1 text-center">Engineering</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/dollar.png" alt="Finance" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Finance</span>
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
+        <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/dollar.png" alt="Finance" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
+        <span class="text-[1.2rem] mt-1 text-center">Finance</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/scale.png" alt="Legal" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Legal</span>
+        <span class="text-[1.2rem] mt-1 text-center">Legal</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/leaf.png" alt="Wellness" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Wellness</span>
+        <span class="text-[1.2rem] mt-1 text-center">Wellness</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/consultant.png" alt="Consulting" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Consulting</span>
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
+        <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/consultant.png" alt="Consulting" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
+        <span class="text-[1.2rem] mt-1 text-center">Consulting</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/house.png" alt="Real Estate" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Real Estate</span>
+        <span class="text-[1.2rem] mt-1 text-center">Real Estate</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/tools.png" alt="Home Services" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Home Services</span>
+        <span class="text-[1.2rem] mt-1 text-center">Home Services</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/doctor.png" alt="Medical" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Medical</span>
+        <span class="text-[1.2rem] mt-1 text-center">Medical</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/bullhorn.png" alt="Marketing" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Marketing</span>
+        <span class="text-[1.2rem] mt-1 text-center">Marketing</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/laptop.png" alt="Tech / IT" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Technology</span>
+        <span class="text-[1.2rem] mt-1 text-center">Technology</span>
       </div>
-      <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
+      <div class="carousel-item flex flex-col items-center min-w-[120px] text-[#FFFEFB] user-select-none" role="listitem">
         <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/bag.png" alt="Retail" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-        <span class="text-[1.2rem] mt-1">Retail</span>
+        <span class="text-[1.2rem] mt-1 text-center">Retail</span>
       </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/engine.png" alt="Engineering" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Engineering</span>
     </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/dollar.png" alt="Finance" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Finance</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/scale.png" alt="Legal" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Legal</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/leaf.png" alt="Wellness" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Wellness</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/consultant.png" alt="Consulting" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Consulting</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/house.png" alt="Real Estate" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Real Estate</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/tools.png" alt="Home Services" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Home Services</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/doctor.png" alt="Medical" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Medical</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/bullhorn.png" alt="Marketing" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Marketing</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/laptop.png" alt="Tech / IT" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Technology</span>
-    </div>
-    <div class="carousel-item flex flex-col items-center min-w-[76px] text-[#FFFEFB] user-select-none" role="listitem">
-      <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/bag.png" alt="Retail" class="mb-1 rounded-lg object-contain w-4.5 h-4.5">
-      <span class="text-[1.2rem] mt-1">Retail</span>
-    </div>
-      </div>
-</div>
-  
+  </div>
   <script>
     (function() {
       const track = document.getElementById('industryCarouselTrack');
-      function setupCarousel() {
+      
+      function setupInfiniteCarousel() {
         if (!track) return;
-        // Clear previous clones
+        
+        // Clear any existing clones
         const clones = track.querySelectorAll('.clone');
         clones.forEach(c => c.remove());
+        
+        // Get original items
         const items = Array.from(track.children).filter(c => !c.classList.contains('clone'));
-        // Duplicate items for seamless loop
+        
+        // Clone items for seamless loop (add to end)
         items.forEach(item => {
           const clone = item.cloneNode(true);
           clone.classList.add('clone');
           track.appendChild(clone);
         });
-        // Calculate total width including gap
-        let totalWidth = 0;
-        const gap = parseFloat(getComputedStyle(track).gap) || 40;
+        
+        // Calculate width of one complete set
+        let singleSetWidth = 0;
+        const gap = 80; // Updated to 80px gap to match new CSS
+        
         items.forEach(item => {
           const rect = item.getBoundingClientRect();
-          totalWidth += rect.width + gap;
+          singleSetWidth += rect.width + gap;
         });
-        // Subtract the last gap
-        totalWidth -= gap;
-        track.style.setProperty('--carousel-shift', totalWidth + 'px');
-        // Duration between 22s and 28s randomly
-        track.style.setProperty('--carousel-duration', (22 + Math.random() * 6) + 's');
+        
+        // Remove the last gap
+        singleSetWidth -= gap;
+        
+        // Set CSS variables for animation
+        track.style.setProperty('--carousel-width', singleSetWidth + 'px');
+        track.style.setProperty('--carousel-duration', '20s'); // Fixed 20s duration
+        
+        // Start the animation
+        track.style.animation = 'carousel-infinite 20s linear infinite';
       }
-      window.addEventListener('load', setupCarousel);
-      window.addEventListener('resize', setupCarousel);
+      
+      // Run setup when page loads
+      window.addEventListener('load', setupInfiniteCarousel);
+      window.addEventListener('resize', setupInfiniteCarousel);
     })();
   </script>
   <style>
-    @keyframes carousel-scroll {
-      from { transform: translateX(0); }
-      to { transform: translateX(calc(-1 * var(--carousel-shift))); }
-    }
-    .animate-\[carousel-scroll_linear_infinite\] {
-      animation: carousel-scroll var(--carousel-duration) linear infinite;
+    @keyframes carousel-infinite {
+      from { 
+        transform: translateX(0); 
+      }
+      to { 
+        transform: translateX(calc(-1 * var(--carousel-width))); 
+      }
     }
   </style>
 </section>
@@ -325,9 +335,9 @@
       </p>
       <h3 class="text-3xl font-semibold text-[#A74D4B] mb-2" style="text-align: right; padding-top:2%;">You Need More Than a Business Card with a Spine</h3>
       <p class="max-w-2xl text-lg text-black mb-6" style="margin-left:auto; text-align:right;">Everyone tells you a book is the new business card, but without a way to engage people, a book sits on a shelf, just like a business card ends up in a pile on someones desk.</p>
-<p class="max-w-2xl text-lg text-black mb-6" style="margin-left:auto; text-align:right;">We know leads are what really counts. Rather than charging you for a vanity bestseller status in some random Amazon category, your Brutal Guide™ has a built in Book Funnel to ensure you’re capturing all the leads you can.</p>
-<p class="max-w-2xl text-lg text-black mb-6" style="margin-left:auto; text-align:right;">As part of the Done-For-You service we’ll create landing pages, next steps actions and email sequences, to make sure all the leads go to you, and all you need think about is your next conversation.</p>
-      <h2 class="md:text-4xl slide-in-left text-3xl font-semibold text-[#818B7F] tracking-tight font-condensed text-center mb-4" style="padding-top:2.5rem; padding-bottom:2%; font-family:'Inter Tight',Inter,Arial,sans-serif;">If we’re a fit, here’s how it works</h2>
+<p class="max-w-2xl text-lg text-black mb-6" style="margin-left:auto; text-align:right;">We know leads are what really counts. Rather than charging you for a vanity bestseller status in some random Amazon category, your Brutal Guide™ has a built in Book Funnel to ensure you're capturing all the leads you can.</p>
+<p class="max-w-2xl text-lg text-black mb-6" style="margin-left:auto; text-align:right;">As part of the Done-For-You service we'll create landing pages, next steps actions and email sequences, to make sure all the leads go to you, and all you need think about is your next conversation.</p>
+      <h2 class="md:text-4xl slide-in-left text-3xl font-semibold text-[#818B7F] tracking-tight font-condensed text-center mb-4" style="padding-top:2.5rem; padding-bottom:2%; font-family:'Inter Tight',Inter,Arial,sans-serif;">If we're a fit, here's how it works</h2>
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="flex flex-col items-center text-center p-5 rounded-lg shadow-card bg-white border border-[#e5e4e1] fade-in delay-100">
           
@@ -357,37 +367,37 @@
       <h2 class="md:text-4xl text-3xl font-bold text-black tracking-tight font-condensed mb-8" style="font-family:'Inter Tight',Inter,Arial,sans-serif;">
         Your Voice, Your Message, Your Leads
       </h2>
-              <p class="text-lg font-normal text-black mb-7" style="width: 100%;">Across ANY industry, we'll help identify what gets your clients to raise their hand and say ''.</p>
+              <p class="text-lg font-normal text-black mb-7" style="width: 100%;">Across ANY industry, we'll help identify what gets your clients to raise their hand and say '<em>I Want That</em>'.</p>
 <p>Let's find your niche and we'll take it from there.</p>
 <p>&nbsp;</p>
       <div class="masonry gap-4">
-        <!-- 9 sample covers -->
+        <!-- 9 sample covers with consistent styling -->
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/estate-cover.png" alt="Book for Estate Plannings" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/estate-cover.png" alt="Book for Estate Plannings" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/marketing-cover.png" alt="Social Media Marketing Book" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/marketing-cover.png" alt="Social Media Marketing Book" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/franchise-cover.png" alt="Book for Franchise Consultants" class="card-hover transition-all rounded-lg shadow-card" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/franchise-cover.png" alt="Book for Franchise Consultants" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/cpa-cover.png" alt="Book for CPA;s" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/cpa-cover.png" alt="Book for CPAs" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/hvac-cover.png" alt="Book for HVAC Contractors" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/hvac-cover.png" alt="Book for HVAC Contractors" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/retire-cover.png" alt="Book for Retirement Planners" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/retire-cover.png" alt="Book for Retirement Planners" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/tutor-cover.png" alt="Book for Private Tutors" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/tutor-cover.png" alt="Book for Private Tutors" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/yoga-cover.png" alt="Book for Yoga Studios" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/yoga-cover.png" alt="Book for Yoga Studios" class="gallery-image">
         </div>
         <div class="w-full mb-4 break-inside-avoid">
-          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/consult-cover.png" alt="Book for Business Consultants" class="rounded-lg shadow-card card-hover transition-all" style="width:100%;aspect-ratio:4/5;object-fit:cover;">
+          <img src="https://brutalguides.s3.us-east-1.amazonaws.com/system/site/consult-cover.png" alt="Book for Business Consultants" class="gallery-image">
         </div>
       </div>
     </div>
