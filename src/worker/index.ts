@@ -5,7 +5,7 @@ const app = new Hono<{ Bindings: Env }>();
 // MTA-STS policy route
 app.get("/.well-known/mta-sts.txt", (c) => {
   const policy = `version: STSv1
-mode: enforce
+mode: testing
 mx: aspmx.l.google.com
 mx: alt1.aspmx.l.google.com
 mx: alt2.aspmx.l.google.com
