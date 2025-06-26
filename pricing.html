@@ -1,0 +1,609 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brutal Guides™ Pricing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Inter+Tight:wght@700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.264.1/font/lucide.css">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #FFFEFB;
+      color: #1A1A1A;
+      transition: background 0.3s, color 0.3s;
+      margin: 0;
+      min-height: 100vh;
+    }
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1A1A1A;
+        color: #FFFEFB;
+      }
+      .bg-offwhite { background: #1A1A1A !important; }
+      .text-black { color: #FFFEFB !important; }
+      .bg-black { background: #FFFEFB !important; }
+      .text-offwhite { color: #1A1A1A !important; }
+      .shadow-card { box-shadow: rgba(255,255,255,0.08) 0 0 10px !important; }
+      .border-red { border-color: #A74D4B !important;}
+    }
+    .font-condensed {
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      font-stretch: condensed;
+    }
+    .shadow-card {
+      box-shadow: rgba(0,0,0,0.08) 0 0 10px;
+    }
+    .btn {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      outline: 2px solid transparent;
+      outline-offset: 0;
+      box-shadow: none;
+    }
+    .btn:focus-visible {
+      outline: 2px solid #818B7F;
+      outline-offset: 2px;
+    }
+    .btn-red {
+      background: #A74D4B;
+      color: #FFFEFB;
+      border: none;
+    }
+    .btn-red:hover, .btn-red:focus {
+      background: #922e2b;
+    }
+    .btn-outline-red {
+      background: #FFFEFB;
+      color: #A74D4B;
+      border: 2px solid #A74D4B;
+    }
+    .btn-outline-red:hover, .btn-outline-red:focus {
+      background: #A74D4B;
+      color: #FFFEFB;
+    }
+    .btn-offwhite {
+      background: #FFFEFB;
+      color: #1A1A1A;
+      border: none;
+    }
+    .btn-offwhite:hover, .btn-offwhite:focus {
+      background: #F3F2EF;
+      color: #A74D4B;
+    }
+    
+    /* Pricing specific styles */
+    .pricing-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 20px 56px 20px; /* Added top padding for fixed nav */
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+    .pricing-hero {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .pricing-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .pricing-hero p {
+      font-size: 1.15rem;
+      color: #818B7F;
+      margin: 0 auto;
+      max-width: 480px;
+      font-weight: 400;
+    }
+    .pricing-cards {
+      display: flex;
+      gap: 2.25rem;
+      justify-content: center;
+      align-items: stretch;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .pricing-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(36,37,35,0.07), 0 0.5px 2px rgba(129,139,126,0.03);
+      flex: 1 1 280px;
+      max-width: 350px;
+      min-width: 270px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 36px 32px 32px 32px;
+      border: 2px solid transparent;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+      position: relative;
+      z-index: 1;
+    }
+    .pricing-card:hover,
+    .pricing-card:focus-within {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(36,37,35,0.09), 0 2px 8px rgba(129,139,126,0.04);
+    }
+    .pricing-card.popular {
+      border-color: #A74D4B;
+      z-index: 2;
+      box-shadow: 0 6px 36px rgba(167,77,75,0.08), 0 2px 8px rgba(129,139,126,0.05);
+      max-width: 370px;
+      min-width: 290px;
+      padding-top: 48px;
+    }
+    .popular-badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      background: #A74D4B;
+      color: #fff;
+      font-size: 0.97rem;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: 5px 18px;
+      letter-spacing: 0.01em;
+      box-shadow: 0 2px 8px rgba(167,77,75,0.09);
+      border: none;
+      pointer-events: none;
+    }
+    .plan-title {
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+    .plan-price {
+      font-size: 2.15rem;
+      font-weight: 600;
+      color: #818B7F;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.1rem;
+      margin-top: 0.2rem;
+    }
+    .plan-note {
+      font-size: 1rem;
+      color: #818B7F;
+      margin-bottom: 1.3rem;
+      font-weight: 400;
+    }
+    .plan-divider {
+      border: none;
+      border-top: 1px solid #EBE9E3;
+      margin: 1.3rem 0 1rem 0;
+      width: 100%;
+    }
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .plan-feature {
+      display: flex;
+      align-items: flex-start;
+      font-size: 1.02rem;
+      color: #1A1A1A;
+      font-weight: 400;
+      gap: 0.55rem;
+    }
+    .plan-feature svg {
+      flex-shrink: 0;
+      color: #818B7F;
+      margin-top: 1px;
+    }
+    .plan-cta {
+      display: block;
+      margin-top: auto;
+      background: #A74D4B;
+      color: #fff;
+      font-size: 1.09rem;
+      font-weight: 500;
+      text-align: center;
+      border: none;
+      border-radius: 7px;
+      padding: 0.95rem 0;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 1px 5px rgba(167,77,75,0.05);
+      transition: background 0.18s, box-shadow 0.18s, transform 0.16s;
+      text-decoration: none;
+      letter-spacing: 0;
+    }
+    .plan-cta:hover, .plan-cta:focus {
+      background: #922e2b;
+      box-shadow: 0 2px 10px rgba(167,77,75,0.11);
+    }
+    /* FAQ */
+    .faq-section {
+      max-width: 650px;
+      margin: 0 auto;
+      margin-top: 56px;
+    }
+    .faq-list {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(36,37,35,0.06);
+      padding: 18px 0;
+      margin-bottom: 32px;
+      border: 1px solid #EBE9E3;
+    }
+    .faq-item:not(:last-child) {
+      border-bottom: 1px solid #F2F1ED;
+    }
+    .faq-question {
+      cursor: pointer;
+      padding: 16px 28px 15px 28px;
+      font-size: 1.11rem;
+      font-weight: 500;
+      color: #1A1A1A;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      outline: none;
+    }
+    .faq-answer {
+      padding: 0 28px 16px 54px;
+      font-size: 1.02rem;
+      color: #818B7F;
+      display: none;
+      animation: fadein 0.18s;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-chevron {
+      width: 22px;
+      height: 22px;
+      color: #818B7F;
+      transition: transform 0.18s;
+      margin-left: 11px;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(90deg);
+    }
+    @keyframes fadein { from {opacity:0;} to {opacity:1;} }
+    /* Trust bar */
+    .trust-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      color: #818B7F;
+      font-size: 1.04rem;
+      margin-bottom: 40px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .trust-logo {
+      height: 26px;
+      opacity: 0.82;
+      margin: 0 0.6rem;
+    }
+    .trust-policy {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .trust-policy svg {
+      color: #A74D4B;
+      margin-right: 5px;
+      width: 19px;
+      height: 19px;
+    }
+    @media (max-width: 950px) {
+      .pricing-cards {
+        gap: 1.35rem;
+      }
+      .pricing-card,
+      .pricing-card.popular {
+        max-width: 100%;
+        min-width: 0;
+      }
+    }
+    @media (max-width: 700px) {
+      .pricing-hero h1 { font-size: 2rem; }
+      .pricing-card,
+      .pricing-card.popular {
+        padding: 29px 12px 22px 12px;
+      }
+      .popular-badge { font-size: 0.91rem; padding: 4px 13px;}
+    }
+    @media (max-width: 600px) {
+      .pricing-cards {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: stretch;
+      }
+      .pricing-card,
+      .pricing-card.popular {
+        max-width: 100%;
+        min-width: 0;
+        margin: 0 auto;
+      }
+      .popular-badge { top: -19px; }
+      .faq-section { margin-top: 36px;}
+      .pricing-container {
+        padding-top: 100px;
+      }
+    }
+  </style>
+<script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;family=Inter&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-offwhite min-h-screen flex flex-col text-black tracking-normal" style="font-family:'Inter', Arial, sans-serif;">
+  <!-- NAV BAR -->
+  <header class="fixed top-0 left-0 w-full z-30 bg-offwhite shadow-sm border-b border-[#f6f5f2] backdrop-blur-sm h-16 flex items-center" style="height:64px;">
+    <div class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
+      <!-- Logo -->
+      <div class="flex flex-col leading-none uppercase select-none text-3xl font-bold text-black tracking-tight font-condensed" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+        BRUTAL<br>GUIDES™
+      </div>
+      <!-- Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-base font-medium">
+        <a href="index.html" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Home</a>
+        <a href="#about" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">About</a>
+        <a href="pricing.html" class="text-[#A74D4B] transition-colors px-1 py-1 rounded">Pricing</a>
+        <a href="#get-started" class="ml-4 btn btn-red" style="border-radius:8px;">Get Started</a>
+      </nav>
+      <!-- Mobile Menu -->
+      <div class="md:hidden">
+        <button id="mobileNavBtn" aria-label="Open menu" class="btn-offwhite p-2 border-none text-black">
+          <i class="lucide lucide-menu" style="font-size:1.8rem;"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile drawer (hidden by default) -->
+    <div id="mobileNav" class="fixed inset-0 bg-black bg-opacity-30 z-50 flex flex-col items-end p-6 transition-all duration-300" style="display:none;">
+      <div class="bg-offwhite rounded-lg w-64 p-6 shadow-card flex flex-col gap-6">
+        <button id="closeMobileNav" class="self-end btn-offwhite p-2 border-none">
+          <i class="lucide lucide-x" style="font-size:1.6rem;"></i>
+        </button>
+        <a href="index.html" class="hover:text-[#A74D4B] text-lg">Home</a>
+        <a href="#about" class="hover:text-[#A74D4B] text-lg">About</a>
+        <a href="pricing.html" class="text-[#A74D4B] text-lg">Pricing</a>
+        <a href="#get-started" class="btn btn-red mt-3">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PRICING CONTENT -->
+  <section class="pricing-container">
+    <!-- Hero -->
+    <header class="pricing-hero">
+      <h1>Choose Your Brutal Guide Plan</h1>
+      <p>Direct, done-for-you book-funnel plans for service business owners. No fluff. No contracts. Just more leads.</p>
+    </header>
+    <!-- Pricing Cards -->
+    <main class="pricing-cards">
+      <!-- Book-Only -->
+      <article class="pricing-card" aria-label="Book-Only Plan">
+        <h2 class="plan-title">Book-Only</h2>
+        <div class="plan-price">$2,000<span style="font-size:1.1rem;font-weight:500;color:#818B7F;font-family:Inter,Arial,sans-serif;">/yr</span></div>
+        <div class="plan-note">or $5,000 for 3 years prepaid</div>
+        <hr class="plan-divider" aria-hidden="true">
+        <ul class="plan-features">
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F" stroke-width="2"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Custom Brutal Guide™ manuscript & print/PDF files
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            [YourBook].guide domain (you own it)
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Catch-all email forwarding (author@[YourBook].guide)
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Three CTA pages pre-wired with redirects
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            72-hour email support (content questions only)
+          </li>
+        </ul>
+        <a href="#" class="plan-cta" data-test="bookonly-cta">License the Book</a>
+      </article>
+      <!-- Essentials -->
+      <article class="pricing-card" aria-label="Essentials Plan">
+        <h2 class="plan-title">Essentials</h2>
+        <div class="plan-price">$2,000<span style="font-size:1.06rem;font-weight:500;color:#818B7F;margin-left:3px;"> setup</span> <br><span style="font-size:1.45rem;font-weight:600;color:#818B7F;">+ $350</span><span style="font-size:1.07rem;font-weight:500;color:#818B7F;">/mo</span></div>
+        <div class="plan-note">Cancel anytime</div>
+        <hr class="plan-divider" aria-hidden="true">
+        <ul class="plan-features">
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Everything in Book-Only
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Book Website & Landing Page hosted on GHL
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Initial 5-email autoresponder (written + scheduled)
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Book Image Pack (3D mock-ups + social tiles)
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Domain-level SPF/DKIM/DMARC configured
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            1 minor funnel tweak per month
+          </li>
+        </ul>
+        <a href="#" class="plan-cta" data-test="essentials-cta">Launch My Funnel</a>
+      </article>
+      <!-- Everything (Popular) -->
+      <article class="pricing-card popular" aria-label="Everything Plan">
+        <div class="popular-badge" aria-label="Most Popular">Most Popular</div>
+        <h2 class="plan-title">Everything</h2>
+        <div class="plan-price">$1,000<span style="font-size:1.09rem;font-weight:500;color:#818B7F;">/mo</span></div>
+        <div class="plan-note">No setup fee. Book included.</div>
+        <hr class="plan-divider" aria-hidden="true">
+        <ul class="plan-features">
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Everything in Essentials
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Fortnightly nurture emails (we write &amp; send)
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            3 branded social posts/month (text + images)
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Super Signature™ in every outbound email
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Interactive quiz/scorecard to pre-qualify leads
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#818B7F"/><path stroke="#818B7F" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Quarterly strategy call + KPI dashboard
+          </li>
+          <li class="plan-feature">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20" height="20"><circle cx="12" cy="12" r="10" stroke="#A74D4B"/><path stroke="#A74D4B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+            Meta Ads management add-on available (+$200/mo)
+          </li>
+        </ul>
+        <a href="#" class="plan-cta" data-test="everything-cta">Run It All for Me</a>
+      </article>
+    </main>
+    <!-- FAQ + Trust -->
+    <section class="faq-section" aria-label="Frequently Asked Questions">
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq1" tabindex="0">
+            Is the book really custom, or just a template?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq1">Every Brutal Guide™ is tailored to your business and voice, not just a find-and-replace template. We interview you, research your market, and build a lead-getter that actually reflects what you do.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq2" tabindex="0">
+            What if I want to cancel or upgrade?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq2">You can cancel any time—no contracts, no lock-ins. Want more firepower? Upgrades are instant, and you keep all assets, including your domain and book files.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq3" tabindex="0">
+            How fast can I launch?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq3">Most clients are live with their book and funnel in 4–6 weeks. Essentials and Everything plans include done-for-you launch assets so you can get leads right away.</div>
+        </div>
+      </div>
+      <div class="trust-bar" aria-label="Trust and Policy">
+        <div class="trust-policy">
+          <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#A74D4B"/><path stroke="#A74D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8.5 12.6l2.1 2.1 4.3-4.3"/></svg>
+          30-day cancel, no contracts
+        </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png" class="trust-logo" alt="" aria-hidden="true" style="background:#E7E6E2;border-radius:3px;width:55px;height:26px;object-fit:contain;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png" class="trust-logo" alt="" aria-hidden="true" style="background:#E7E6E2;border-radius:3px;width:55px;height:26px;object-fit:contain;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png" class="trust-logo" alt="" aria-hidden="true" style="background:#E7E6E2;border-radius:3px;width:55px;height:26px;object-fit:contain;">
+      </div>
+    </section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-offwhite bg-black mt-auto pt-12 pb-12">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-12">
+      <!-- Left: Logo + Blurb -->
+      <div class="flex-1 mb-8 md:mb-0">
+        <div class="uppercase text-lg font-bold tracking-tight font-condensed mb-2 text-[#FFFEFB]" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </div>
+        <p class="max-w-xs text-sm text-[#818B7F]">Brutally honest, zero-fluff guides for business owners who demand leads, not vanity projects.</p>
+      </div>
+      <!-- Center: Navigation -->
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <a href="#get-started" class="btn btn-red w-40 mb-2 text-center text-offwhite">Get Started</a>
+        <nav class="flex flex-wrap gap-4 text-base justify-center" style="color:#FFFEFB;">
+          <a href="pricing.html" class="hover:underline text-offwhite">Pricing</a>
+          <a href="#faq" class="hover:underline text-offwhite">FAQ</a>
+          <a href="#about" class="hover:underline text-offwhite">How It Works</a>
+        </nav>
+      </div>
+      <!-- Right: Contact/Social -->
+      <div class="flex-1 flex flex-col gap-4 items-end" style="color:#FFFEFB;">
+        <a href="mailto:hello@brutalguides.com" class="hover:underline text-base text-offwhite">Contact Us</a>
+        <div class="flex gap-4">
+          <a href="#" title="Twitter" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="LinkedIn" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="Instagram" class="hover:text-[#A74D4B] text-offwhite"></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
+      <div>
+        <a href="#" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
+        <a href="#" class="hover:underline text-offwhite">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS for mobile nav, dynamic year, and FAQ -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile nav
+    document.getElementById('mobileNavBtn').onclick = () => {
+      document.getElementById('mobileNav').style.display = 'flex';
+    };
+    document.getElementById('closeMobileNav').onclick = () => {
+      document.getElementById('mobileNav').style.display = 'none';
+    };
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var parent = btn.closest('.faq-item');
+        var open = parent.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(item){
+          item.classList.remove('open');
+          item.querySelector('.faq-question').setAttribute('aria-expanded','false');
+        });
+        if(!open) {
+          parent.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+      btn.addEventListener('keydown', function(e){
+        if(e.key==='Enter' || e.key===' '){
+          e.preventDefault(); btn.click();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
