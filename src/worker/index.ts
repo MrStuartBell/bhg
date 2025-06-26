@@ -20,4 +20,14 @@ max_age: 86400`;
 // API route
 app.get("/api/", (c) => c.json({ name: "Cloudflare" }));
 
+// Serve pricing page with explicit HTML content
+app.get("/pricing", async (c) => {
+  // You can put your pricing HTML content directly here for now
+  return c.html(`<!DOCTYPE html>
+<html>
+<head><title>Pricing</title></head>
+<body><h1>Pricing Page</h1><p>Your pricing content here</p></body>
+</html>`);
+});
+
 export default app;
