@@ -13,6 +13,30 @@
       color: #1A1A1A;
       transition: background 0.3s, color 0.3s;
     }
+    
+    /* CRITICAL: Force hamburger button styling - must be at top */
+    span[id="mobileNavBtn"] {
+      display: inline-block !important;
+      width: 44px !important;
+      height: 44px !important;
+      line-height: 44px !important;
+      text-align: center !important;
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      border: 2px solid #666666 !important;
+      border-radius: 6px !important;
+      cursor: pointer !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      color: #000000 !important;
+      user-select: none !important;
+    }
+    span[id="mobileNavBtn"]:hover {
+      background-color: #f0f0f0 !important;
+      background: #f0f0f0 !important;
+      color: #A74D4B !important;
+    }
+    
     @media (prefers-color-scheme: dark) {
       body {
         background: #1A1A1A;
@@ -24,6 +48,35 @@
       .text-offwhite { color: #1A1A1A !important; }
       .shadow-card { box-shadow: rgba(255,255,255,0.08) 0 0 10px !important; }
       .border-red { border-color: #A74D4B !important;}
+      
+      /* Dark mode mobile menu */
+      #mobileNav div[style*="background-color:#ffffff"] {
+        background-color: #1a1a1a !important;
+      }
+      #mobileNav h3[style*="color:#000000"],
+      #mobileNav a[style*="color:#000000"],
+      #mobileNav button[style*="color:#000000"] {
+        color: #ffffff !important;
+      }
+      #mobileNav button[style*="background-color:#f5f5f5"] {
+        background-color: #333333 !important;
+      }
+      #mobileNav a[style*="border-color:#e5e5e5"] {
+        border-color: #333333 !important;
+      }
+      
+      /* Dark mode hamburger button */
+      span[id="mobileNavBtn"] {
+        background-color: #333333 !important;
+        background: #333333 !important;
+        color: #ffffff !important;
+        border-color: #555555 !important;
+      }
+      span[id="mobileNavBtn"]:hover {
+        background-color: #444444 !important;
+        background: #444444 !important;
+        color: #A74D4B !important;
+      }
     }
     .font-condensed {
       font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
@@ -173,32 +226,51 @@
   <!-- NAV BAR -->
   <header class="fixed top-0 left-0 w-full z-30 bg-offwhite shadow-sm border-b border-[#f6f5f2] backdrop-blur-sm h-16 flex items-center" style="height:64px;">
     <div class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
-      <!-- Logo -->
-      <div class="flex flex-col leading-none uppercase select-none text-3xl font-bold text-black tracking-tight font-condensed" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
-        <a href="/">BRUTAL<br>GUIDES™</a>
+      <!-- Desktop: Left Logo, Desktop Nav Links + Button -->
+      <div class="hidden md:flex items-center justify-between w-full">
+        <!-- Logo (clickable to home) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-3xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Nav Links -->
+        <nav class="flex items-center gap-8 text-base font-medium">
+          <a href="/how-it-works" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">How It Works</a>
+          <a href="/pricing" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Pricing</a>
+          <a href="/contact" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Contact</a>
+          <a href="#get-started" class="ml-4 btn btn-red" style="border-radius:8px;">Get Started</a>
+        </nav>
       </div>
-      <!-- Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 text-base font-medium">
-        <a href="/about" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">About</a>
-        <a href="/pricing" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Pricing</a>
-        <a href="#get-started" class="ml-4 btn btn-red" style="border-radius:8px;">Get Started</a>
-      </nav>
-      <!-- Mobile Menu -->
-      <div class="md:hidden">
-        <button id="mobileNavBtn" aria-label="Open menu" class="btn-offwhite p-2 border-none text-black">
-          <i class="lucide lucide-menu" style="font-size:1.8rem;"></i>
-        </button>
+      
+      <!-- Mobile: Logo, Get Started Button, Hamburger -->
+      <div class="flex md:hidden items-center w-full">
+        <!-- Mobile Logo (Left side for spacing) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors flex-1" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Mobile Controls (Right side) -->
+        <div class="flex items-center gap-3">
+          <a href="#get-started" class="btn btn-red text-sm px-3 py-2 whitespace-nowrap" style="border-radius:6px;">Get Started</a>
+          <span id="mobileNavBtn" role="button" tabindex="0" aria-label="Open menu" style="display:inline-block;width:44px;height:44px;line-height:44px;text-align:center;background-color:#ffffff;border:2px solid #666;border-radius:6px;cursor:pointer;font-size:18px;font-weight:bold;color:#000;user-select:none;">
+            ☰
+          </span>
+        </div>
       </div>
     </div>
-    <!-- Mobile drawer (hidden by default) -->
-    <div id="mobileNav" class="fixed inset-0 bg-black bg-opacity-30 z-50 flex flex-col items-end p-6 transition-all duration-300" style="display:none;">
-      <div class="bg-offwhite rounded-lg w-64 p-6 shadow-card flex flex-col gap-6">
-        <button id="closeMobileNav" class="self-end btn-offwhite p-2 border-none">
-          <i class="lucide lucide-x" style="font-size:1.6rem;"></i>
-        </button>
-        <a href="#about" class="hover:text-[#A74D4B] text-lg">About</a>
-        <a href="#pricing" class="hover:text-[#A74D4B] text-lg">Pricing</a>
-        <a href="#get-started" class="btn btn-red mt-3">Get Started</a>
+    <!-- Mobile drawer (solid backgrounds for visibility) -->
+    <div id="mobileNav" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[9999]" style="display:none;">
+      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] shadow-2xl flex flex-col" style="background-color:#ffffff;">
+        <div class="flex justify-between items-center p-4 border-b" style="background-color:#ffffff;border-color:#e5e5e5;">
+          <h3 class="text-lg font-semibold" style="color:#000000;">Menu</h3>
+          <button id="closeMobileNav" class="p-2 rounded" style="color:#000000;background-color:#f5f5f5;min-width:40px;min-height:40px;">
+            ✕
+          </button>
+        </div>
+        <div class="flex flex-col p-6 gap-4 flex-1" style="background-color:#ffffff;">
+          <a href="/how-it-works" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">How It Works</a>
+          <a href="/pricing" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Pricing</a>
+          <a href="/contact" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Contact</a>
+          <a href="#get-started" class="btn btn-red text-lg mt-4">Get Started</a>
+        </div>
       </div>
     </div>
   </header>
@@ -498,7 +570,8 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="text-offwhite bg-black mt-auto pt-12 pb-12"><div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-12">
+  <footer class="text-offwhite bg-black mt-auto pt-12 pb-12">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-12">
       <!-- Left: Logo + Blurb -->
       <div class="flex-1 mb-8 md:mb-0">
         <div class="uppercase text-lg font-bold tracking-tight font-condensed mb-2 text-[#FFFEFB]" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
@@ -510,10 +583,11 @@
       <div class="flex-1 flex flex-col items-center gap-2">
         <a href="#get-started" class="btn btn-red w-40 mb-2 text-center text-offwhite">Get Started</a>
         <nav class="flex flex-wrap gap-4 text-base justify-center" style="color:#FFFEFB;">
-          <a href="/about" class="hover:underline text-offwhite">About</a>
-          <a href="/pricing" class="hover:underline text-offwhite">Pricing</a>
-          <a href="#faq" class="hover:underline text-offwhite">FAQ</a>
           <a href="/how-it-works" class="hover:underline text-offwhite">How It Works</a>
+          <a href="/pricing" class="hover:underline text-offwhite">Pricing</a>
+          <a href="/faq" class="hover:underline text-offwhite">FAQ</a>
+          <a href="/about" class="hover:underline text-offwhite">About</a>
+          <a href="/contact" class="hover:underline text-offwhite">Contact</a>
         </nav>
       </div>
       <!-- Right: Contact/Social -->
@@ -525,24 +599,59 @@
           <a href="#" title="Instagram" class="hover:text-[#A74D4B] text-offwhite"></a>
         </div>
       </div>
-    </div><div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+    </div>
+    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
       <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
       <div>
         <a href="#" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
         <a href="#" class="hover:underline text-offwhite">Terms of Service</a>
       </div>
-    </div></footer>
+    </div>
+  </footer>
 
-  <!-- JS for mobile nav and dynamic year -->
+  <!-- JS for mobile nav, dynamic year, and carousel -->
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // Mobile nav
-    document.getElementById('mobileNavBtn').onclick = () => {
-      document.getElementById('mobileNav').style.display = 'flex';
-    };
-    document.getElementById('closeMobileNav').onclick = () => {
-      document.getElementById('mobileNav').style.display = 'none';
-    };
+    
+    // Mobile nav with debugging
+    const mobileNavBtn = document.getElementById('mobileNavBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    
+    if (mobileNavBtn && mobileNav) {
+      mobileNavBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        mobileNav.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+      
+      // Handle keyboard navigation for span
+      mobileNavBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          mobileNav.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    }
+    
+    if (closeMobileNav && mobileNav) {
+      closeMobileNav.addEventListener('click', function(e) {
+        e.preventDefault();
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+      });
+    }
+    
+    // Close on background click
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          mobileNav.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
   </script>
 
 </body></html>
