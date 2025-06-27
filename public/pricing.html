@@ -15,6 +15,30 @@
       margin: 0;
       min-height: 100vh;
     }
+    
+    /* CRITICAL: Force hamburger button styling - must be at top */
+    button[id="mobileNavBtn"] {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 2px solid #999999 !important;
+      border-radius: 6px !important;
+      padding: 10px !important;
+      width: 44px !important;
+      height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      cursor: pointer !important;
+    }
+    button[id="mobileNavBtn"]:hover {
+      background-color: #f0f0f0 !important;
+      background: #f0f0f0 !important;
+      color: #A74D4B !important;
+    }
+    
     @media (prefers-color-scheme: dark) {
       body {
         background: #1A1A1A;
@@ -32,14 +56,16 @@
       #mobileNav .border-gray-200 { border-color: #333 !important; }
       #mobileNav .bg-gray-100 { background: #333 !important; }
       /* Dark mode hamburger button */
-      #mobileNavBtn { 
-        background: #333 !important; 
-        color: #FFFEFB !important; 
-        border-color: #555 !important; 
-      }
-      #mobileNavBtn:hover { 
-        background: #444 !important; 
-        color: #A74D4B !important; 
+      @media (prefers-color-scheme: dark) {
+        button#mobileNavBtn { 
+          background: #333333 !important; 
+          color: #ffffff !important; 
+          border-color: #555555 !important; 
+        }
+        button#mobileNavBtn:hover { 
+          background: #444444 !important; 
+          color: #A74D4B !important; 
+        }
       }
     }
     .font-condensed {
@@ -49,6 +75,24 @@
     .shadow-card {
       box-shadow: rgba(0,0,0,0.08) 0 0 10px;
     }
+    /* Force hamburger button styling */
+    button#mobileNavBtn {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 1px solid #cccccc !important;
+      border-radius: 4px !important;
+      padding: 8px !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    button#mobileNavBtn:hover {
+      background: #f5f5f5 !important;
+      color: #A74D4B !important;
+    }
+    
     .btn {
       border-radius: 8px;
       font-weight: 500;
@@ -393,9 +437,9 @@
         <!-- Mobile Controls (Right side) -->
         <div class="flex items-center gap-3">
           <a href="#get-started" class="btn btn-red text-sm px-3 py-2 whitespace-nowrap" style="border-radius:6px;">Get Started</a>
-          <button id="mobileNavBtn" aria-label="Open menu" class="flex items-center justify-center p-2 text-black hover:text-[#A74D4B] transition-colors border border-gray-300 rounded bg-white" style="min-width:40px;min-height:40px;">
+          <span id="mobileNavBtn" role="button" tabindex="0" aria-label="Open menu" style="display:inline-block;width:44px;height:44px;line-height:44px;text-align:center;background-color:#ffffff;border:2px solid #666;border-radius:6px;cursor:pointer;font-size:18px;font-weight:bold;color:#000;user-select:none;">
             ☰
-          </button>
+          </span>
         </div>
       </div>
     </div>
@@ -625,6 +669,15 @@
         console.log('Mobile nav button clicked');
         mobileNav.style.display = 'block';
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+      
+      // Handle keyboard navigation for span
+      mobileNavBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          mobileNav.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
       });
     } else {
       console.error('Mobile nav elements not found');
