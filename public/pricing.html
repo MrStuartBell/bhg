@@ -3,7 +3,7 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="light dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brutal<br/>Guides™</title>
+  <title>Brutal Guides™ Pricing</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Inter+Tight:wght@700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.264.1/font/lucide.css">
   <style>
@@ -365,29 +365,34 @@
         </nav>
       </div>
       
-      <!-- Mobile: Right Logo, Get Started Button, Hamburger -->
-      <div class="flex md:hidden items-center justify-between w-full">
-        <!-- Mobile Logo (Right side, clickable to home) -->
-        <a href="/" class="flex flex-col leading-none uppercase select-none text-2xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors order-2" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+      <!-- Mobile: Logo, Get Started Button, Hamburger -->
+      <div class="flex md:hidden items-center w-full">
+        <!-- Mobile Logo (Left side for spacing) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors flex-1" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
           BRUTAL<br>GUIDES™
         </a>
-        <!-- Mobile Get Started + Hamburger -->
-        <div class="flex items-center gap-3 order-3">
-          <a href="#get-started" class="btn btn-red text-sm px-3 py-2" style="border-radius:6px;">Get Started</a>
-          <button id="mobileNavBtn" aria-label="Open menu" class="p-2 text-black hover:text-[#A74D4B] transition-colors">
-            <i class="lucide lucide-menu" style="font-size:1.6rem;"></i>
+        <!-- Mobile Controls (Right side) -->
+        <div class="flex items-center gap-3">
+          <a href="#get-started" class="btn btn-red text-sm px-3 py-2 whitespace-nowrap" style="border-radius:6px;">Get Started</a>
+          <button id="mobileNavBtn" aria-label="Open menu" class="flex items-center justify-center p-2 text-black hover:text-[#A74D4B] transition-colors border border-gray-300 rounded" style="min-width:40px;min-height:40px;background:white;">
+            ☰
           </button>
         </div>
       </div>
     </div>
-    <!-- Mobile drawer (higher z-index to ensure visibility) -->
-    <div id="mobileNav" class="fixed inset-0 bg-black bg-opacity-50 z-[60] flex flex-col items-end p-6 transition-all duration-300" style="display:none;">
-      <div class="bg-offwhite rounded-lg w-64 p-6 shadow-lg flex flex-col gap-6 border border-gray-200">
-        <button id="closeMobileNav" class="self-end p-2 text-black hover:text-[#A74D4B] transition-colors">
-          <i class="lucide lucide-x" style="font-size:1.6rem;"></i>
-        </button>
-        <a href="#about" class="hover:text-[#A74D4B] text-lg transition-colors">About</a>
-        <a href="/pricing" class="text-[#A74D4B] text-lg">Pricing</a>
+    <!-- Mobile drawer (fully opaque with clear styling) -->
+    <div id="mobileNav" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[9999]" style="display:none;">
+      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-white shadow-2xl flex flex-col">
+        <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-white">
+          <h3 class="text-lg font-semibold text-black">Menu</h3>
+          <button id="closeMobileNav" class="p-2 text-black hover:text-[#A74D4B] transition-colors bg-gray-100 rounded" style="min-width:40px;min-height:40px;">
+            ✕
+          </button>
+        </div>
+        <div class="flex flex-col p-6 gap-4 bg-white flex-1">
+          <a href="#about" class="text-xl text-black hover:text-[#A74D4B] transition-colors py-4 px-2 border-b border-gray-200 font-medium">About</a>
+          <a href="/pricing" class="text-xl text-[#A74D4B] py-4 px-2 border-b border-gray-200 font-medium">Pricing</a>
+        </div>
       </div>
     </div>
   </header>
@@ -584,13 +589,43 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Mobile nav
-    document.getElementById('mobileNavBtn').onclick = () => {
-      document.getElementById('mobileNav').style.display = 'flex';
-    };
-    document.getElementById('closeMobileNav').onclick = () => {
-      document.getElementById('mobileNav').style.display = 'none';
-    };
+    // Mobile nav with debugging
+    const mobileNavBtn = document.getElementById('mobileNavBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    
+    console.log('Mobile nav elements:', { mobileNavBtn, mobileNav, closeMobileNav });
+    
+    if (mobileNavBtn && mobileNav) {
+      mobileNavBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile nav button clicked');
+        mobileNav.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+    } else {
+      console.error('Mobile nav elements not found');
+    }
+    
+    if (closeMobileNav && mobileNav) {
+      closeMobileNav.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Close mobile nav clicked');
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+      });
+    }
+    
+    // Close on background click
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          console.log('Background clicked, closing nav');
+          mobileNav.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(function(btn){
