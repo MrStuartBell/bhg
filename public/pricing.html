@@ -51,10 +51,23 @@
       .shadow-card { box-shadow: rgba(255,255,255,0.08) 0 0 10px !important; }
       .border-red { border-color: #A74D4B !important;}
       /* Dark mode mobile menu */
-      #mobileNav .bg-offwhite { background: #1A1A1A !important; }
-      #mobileNav .text-black { color: #FFFEFB !important; }
-      #mobileNav .border-gray-200 { border-color: #333 !important; }
-      #mobileNav .bg-gray-100 { background: #333 !important; }
+      @media (prefers-color-scheme: dark) {
+        #mobileNav div[style*="background-color:#ffffff"] {
+          background-color: #1a1a1a !important;
+        }
+        #mobileNav h3[style*="color:#000000"],
+        #mobileNav a[style*="color:#000000"],
+        #mobileNav button[style*="color:#000000"] {
+          color: #ffffff !important;
+        }
+        #mobileNav button[style*="background-color:#f5f5f5"] {
+          background-color: #333333 !important;
+        }
+        #mobileNav a[style*="border-color:#e5e5e5"] {
+          border-color: #333333 !important;
+        }
+      }
+      
       /* Dark mode hamburger button */
       @media (prefers-color-scheme: dark) {
         button#mobileNavBtn { 
@@ -443,19 +456,19 @@
         </div>
       </div>
     </div>
-    <!-- Mobile drawer (dark mode compatible) -->
+    <!-- Mobile drawer (solid backgrounds for visibility) -->
     <div id="mobileNav" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[9999]" style="display:none;">
-      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] bg-offwhite shadow-2xl flex flex-col">
-        <div class="flex justify-between items-center p-4 border-b border-gray-200">
-          <h3 class="text-lg font-semibold text-black">Menu</h3>
-          <button id="closeMobileNav" class="p-2 text-black hover:text-[#A74D4B] transition-colors bg-gray-100 rounded" style="min-width:40px;min-height:40px;">
+      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] shadow-2xl flex flex-col" style="background-color:#ffffff;">
+        <div class="flex justify-between items-center p-4 border-b" style="background-color:#ffffff;border-color:#e5e5e5;">
+          <h3 class="text-lg font-semibold" style="color:#000000;">Menu</h3>
+          <button id="closeMobileNav" class="p-2 rounded" style="color:#000000;background-color:#f5f5f5;min-width:40px;min-height:40px;">
             ✕
           </button>
         </div>
-        <div class="flex flex-col p-6 gap-4 flex-1">
-          <a href="/how-it-works" class="text-xl text-black hover:text-[#A74D4B] transition-colors py-4 px-2 border-b border-gray-200 font-medium">How It Works</a>
-          <a href="/pricing" class="text-xl text-[#A74D4B] py-4 px-2 border-b border-gray-200 font-medium">Pricing</a>
-          <a href="/contact" class="text-xl text-black hover:text-[#A74D4B] transition-colors py-4 px-2 border-b border-gray-200 font-medium">Contact</a>
+        <div class="flex flex-col p-6 gap-4 flex-1" style="background-color:#ffffff;">
+          <a href="/how-it-works" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">How It Works</a>
+          <a href="/pricing" class="text-xl py-4 px-2 border-b font-medium" style="color:#A74D4B;border-color:#e5e5e5;">Pricing</a>
+          <a href="/contact" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Contact</a>
           <a href="#get-started" class="btn btn-red text-lg mt-4">Get Started</a>
         </div>
       </div>
