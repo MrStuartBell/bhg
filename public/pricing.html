@@ -32,7 +32,15 @@
       #mobileNav .border-gray-200 { border-color: #333 !important; }
       #mobileNav .bg-gray-100 { background: #333 !important; }
       /* Dark mode hamburger button */
-      #mobileNavBtn { background: #1A1A1A !important; color: #FFFEFB !important; border-color: #333 !important; }
+      #mobileNavBtn { 
+        background: #333 !important; 
+        color: #FFFEFB !important; 
+        border-color: #555 !important; 
+      }
+      #mobileNavBtn:hover { 
+        background: #444 !important; 
+        color: #A74D4B !important; 
+      }
     }
     .font-condensed {
       font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
@@ -343,6 +351,9 @@
         max-width: 100%;
         min-width: 0;
         margin: 0 auto;
+      }
+      .pricing-card.popular {
+        margin-top: 3rem; /* Extra space for the "Most Popular" badge */
       }
       .popular-badge { top: -19px; }
       .faq-section { margin-top: 36px;}
