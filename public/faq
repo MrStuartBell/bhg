@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brutal Guides™ FAQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Inter+Tight:wght@700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.264.1/font/lucide.css">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #FFFEFB;
+      color: #1A1A1A;
+      transition: background 0.3s, color 0.3s;
+      margin: 0;
+      min-height: 100vh;
+    }
+    
+    /* CRITICAL: Force hamburger button styling - must be at top */
+    button[id="mobileNavBtn"] {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 2px solid #999999 !important;
+      border-radius: 6px !important;
+      padding: 10px !important;
+      width: 44px !important;
+      height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      cursor: pointer !important;
+    }
+    button[id="mobileNavBtn"]:hover {
+      background-color: #f0f0f0 !important;
+      background: #f0f0f0 !important;
+      color: #A74D4B !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1A1A1A;
+        color: #FFFEFB;
+      }
+      .bg-offwhite { background: #1A1A1A !important; }
+      .text-black { color: #FFFEFB !important; }
+      .bg-black { background: #FFFEFB !important; }
+      .text-offwhite { color: #1A1A1A !important; }
+      .shadow-card { box-shadow: rgba(255,255,255,0.08) 0 0 10px !important; }
+      .border-red { border-color: #A74D4B !important;}
+      .faq-list { background: #1A1A1A !important; border-color: #333 !important; }
+      .faq-item:not(:last-child) { border-color: #333 !important; }
+      .faq-question { color: #FFFEFB !important; }
+      .faq-answer { color: #818B7F !important; }
+      .faq-section h2 { color: #FFFEFB !important; }
+      /* Dark mode mobile menu */
+      @media (prefers-color-scheme: dark) {
+        #mobileNav div[style*="background-color:#ffffff"] {
+          background-color: #1a1a1a !important;
+        }
+        #mobileNav h3[style*="color:#000000"],
+        #mobileNav a[style*="color:#000000"],
+        #mobileNav button[style*="color:#000000"] {
+          color: #ffffff !important;
+        }
+        #mobileNav button[style*="background-color:#f5f5f5"] {
+          background-color: #333333 !important;
+        }
+        #mobileNav a[style*="border-color:#e5e5e5"] {
+          border-color: #333333 !important;
+        }
+      }
+      
+      /* Dark mode hamburger button */
+      @media (prefers-color-scheme: dark) {
+        button#mobileNavBtn { 
+          background: #333333 !important; 
+          color: #ffffff !important; 
+          border-color: #555555 !important; 
+        }
+        button#mobileNavBtn:hover { 
+          background: #444444 !important; 
+          color: #A74D4B !important; 
+        }
+      }
+    }
+    .font-condensed {
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      font-stretch: condensed;
+    }
+    .shadow-card {
+      box-shadow: rgba(0,0,0,0.08) 0 0 10px;
+    }
+    /* Force hamburger button styling */
+    button#mobileNavBtn {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 1px solid #cccccc !important;
+      border-radius: 4px !important;
+      padding: 8px !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    button#mobileNavBtn:hover {
+      background: #f5f5f5 !important;
+      color: #A74D4B !important;
+    }
+    
+    .btn {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      outline: 2px solid transparent;
+      outline-offset: 0;
+      box-shadow: none;
+    }
+    .btn:focus-visible {
+      outline: 2px solid #818B7F;
+      outline-offset: 2px;
+    }
+    .btn-red {
+      background: #A74D4B;
+      color: #FFFEFB;
+      border: none;
+    }
+    .btn-red:hover, .btn-red:focus {
+      background: #922e2b;
+    }
+    .btn-outline-red {
+      background: #FFFEFB;
+      color: #A74D4B;
+      border: 2px solid #A74D4B;
+    }
+    .btn-outline-red:hover, .btn-outline-red:focus {
+      background: #A74D4B;
+      color: #FFFEFB;
+    }
+    .btn-offwhite {
+      background: #FFFEFB;
+      color: #1A1A1A;
+      border: none;
+    }
+    .btn-offwhite:hover, .btn-offwhite:focus {
+      background: #F3F2EF;
+      color: #A74D4B;
+    }
+    
+    /* FAQ Page specific styles */
+    .faq-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 20px 56px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+    .faq-hero {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .faq-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .faq-hero p {
+      font-size: 1.15rem;
+      color: #818B7F;
+      margin: 0 auto;
+      max-width: 600px;
+      font-weight: 400;
+    }
+    
+    /* FAQ Section Styling */
+    .faq-section {
+      margin-bottom: 48px;
+    }
+    .faq-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 24px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      letter-spacing: -0.01em;
+    }
+    .faq-list {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(36,37,35,0.06);
+      padding: 18px 0;
+      margin-bottom: 32px;
+      border: 1px solid #EBE9E3;
+    }
+    .faq-item:not(:last-child) {
+      border-bottom: 1px solid #F2F1ED;
+    }
+    .faq-question {
+      cursor: pointer;
+      padding: 16px 28px 15px 28px;
+      font-size: 1.11rem;
+      font-weight: 500;
+      color: #1A1A1A;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      outline: none;
+    }
+    .faq-answer {
+      padding: 0 28px 16px 54px;
+      font-size: 1.02rem;
+      color: #818B7F;
+      display: none;
+      animation: fadein 0.18s;
+      line-height: 1.6;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    .faq-chevron {
+      width: 22px;
+      height: 22px;
+      color: #818B7F;
+      transition: transform 0.18s;
+      margin-left: 11px;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(90deg);
+    }
+    @keyframes fadein { from {opacity:0;} to {opacity:1;} }
+    
+    /* CTA Section */
+    .faq-cta {
+      background: #A74D4B;
+      border-radius: 12px;
+      padding: 48px 32px;
+      text-align: center;
+      color: #FFFEFB;
+      margin-top: 56px;
+    }
+    .faq-cta h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .faq-cta p {
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+    .faq-cta .btn {
+      background: #FFFEFB;
+      color: #A74D4B;
+      font-weight: 600;
+      padding: 12px 32px;
+      font-size: 1.1rem;
+    }
+    .faq-cta .btn:hover {
+      background: #F3F2EF;
+    }
+    
+    @media (max-width: 600px) {
+      .faq-hero h1 { font-size: 2rem; }
+      .faq-container {
+        padding-top: 100px;
+      }
+      .faq-answer {
+        padding-left: 28px;
+      }
+      .faq-cta {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;family=Inter&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-offwhite min-h-screen flex flex-col text-black tracking-normal" style="font-family:'Inter', Arial, sans-serif;">
+  <!-- NAV BAR -->
+  <header class="fixed top-0 left-0 w-full z-30 bg-offwhite shadow-sm border-b border-[#f6f5f2] backdrop-blur-sm h-16 flex items-center" style="height:64px;">
+    <div class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
+      <!-- Desktop: Left Logo, Desktop Nav Links + Button -->
+      <div class="hidden md:flex items-center justify-between w-full">
+        <!-- Logo (clickable to home) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-3xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Nav Links -->
+        <nav class="flex items-center gap-8 text-base font-medium">
+          <a href="/how-it-works" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">How It Works</a>
+          <a href="/pricing" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Pricing</a>
+          <a href="/faq" class="text-[#A74D4B] transition-colors px-1 py-1 rounded">FAQ</a>
+          <a href="/contact" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Contact</a>
+          <a href="#get-started" class="ml-4 btn btn-red" style="border-radius:8px;">Get Started</a>
+        </nav>
+      </div>
+      
+      <!-- Mobile: Logo, Get Started Button, Hamburger -->
+      <div class="flex md:hidden items-center w-full">
+        <!-- Mobile Logo (Left side for spacing) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors flex-1" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Mobile Controls (Right side) -->
+        <div class="flex items-center gap-3">
+          <a href="#get-started" class="btn btn-red text-sm px-3 py-2 whitespace-nowrap" style="border-radius:6px;">Get Started</a>
+          <span id="mobileNavBtn" role="button" tabindex="0" aria-label="Open menu" style="display:inline-block;width:44px;height:44px;line-height:44px;text-align:center;background-color:#ffffff;border:2px solid #666;border-radius:6px;cursor:pointer;font-size:18px;font-weight:bold;color:#000;user-select:none;">
+            ☰
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile drawer (solid backgrounds for visibility) -->
+    <div id="mobileNav" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[9999]" style="display:none;">
+      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] shadow-2xl flex flex-col" style="background-color:#ffffff;">
+        <div class="flex justify-between items-center p-4 border-b" style="background-color:#ffffff;border-color:#e5e5e5;">
+          <h3 class="text-lg font-semibold" style="color:#000000;">Menu</h3>
+          <button id="closeMobileNav" class="p-2 rounded" style="color:#000000;background-color:#f5f5f5;min-width:40px;min-height:40px;">
+            ✕
+          </button>
+        </div>
+        <div class="flex flex-col p-6 gap-4 flex-1" style="background-color:#ffffff;">
+          <a href="/how-it-works" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">How It Works</a>
+          <a href="/pricing" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Pricing</a>
+          <a href="/faq" class="text-xl py-4 px-2 border-b font-medium" style="color:#A74D4B;border-color:#e5e5e5;">FAQ</a>
+          <a href="/contact" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Contact</a>
+          <a href="#get-started" class="btn btn-red text-lg mt-4">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FAQ CONTENT -->
+  <section class="faq-container">
+    <!-- Hero -->
+    <header class="faq-hero">
+      <h1>Frequently Asked Questions</h1>
+      <p>Everything you need to know about Brutal Guides™—the done-for-you book funnels that actually generate leads for serious business owners.</p>
+    </header>
+
+    <!-- BASICS Section -->
+    <section class="faq-section">
+      <h2>Basics</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq1" tabindex="0">
+            What is a Brutally Honest Guide?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq1">A 100-page, niche-specific mini-book engineered to start sales conversations—myth-busting chapters, a call-to-action in every section, and zero filler.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq2" tabindex="0">
+            How is this different from a traditional book?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq2">Traditional books chase royalties and ego; a BHG is a lead magnet built for one avatar, written in 30 days, and wired to an automated funnel that books calls tomorrow.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq3" tabindex="0">
+            Who should NOT buy this?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq3">Anyone selling low-ticket widgets, hunting vanity Amazon rankings, or unwilling to give us a 90-minute interview—save your money.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq4" tabindex="0">
+            Who is the ideal client?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq4">Experts with high client lifetime value, complex services, and prospects who need education before they buy (estate attorneys, advisors, franchisors, etc.).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERABLES Section -->
+    <section class="faq-section">
+      <h2>Deliverables</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq5" tabindex="0">
+            What do I actually get?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq5">Your custom BHG (PDF + print files), 3D mock-ups, a live landing page, five-email mini-course, webinar funnel, and a BookFunnels.ai sub-account—scope expands with higher tiers.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq6" tabindex="0">
+            Can I customise the cover or tone?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq6">Colors, imagery, and voice tweaks are fair game; the core series layout stays so every BHG looks like part of the family.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq7" tabindex="0">
+            Do I need print copies and do you handle them?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq7">Yes—credibility and trademark specimens matter. We prep the files; you click once on KDP or IngramSpark. Expect about $3.50 per unit.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS & TIMELINE Section -->
+    <section class="faq-section">
+      <h2>Process & Timeline</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq8" tabindex="0">
+            How much of my time is required?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq8">One 90-minute recorded interview and two half-hour feedback calls—then answer leads when they arrive.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq9" tabindex="0">
+            What are the exact milestones?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq9">Day 0: invoice + onboarding. Day 5: chapter titles. Day 10: draft manuscript. Day 15: cover + layout. Day 20: funnel live. Delay feedback, delay launch.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq10" tabindex="0">
+            How will we communicate?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq10">Slack for daily chatter, email for approvals, Trello board for deadlines. No mystery gaps.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq11" tabindex="0">
+            What if I miss a feedback window?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq11">The schedule moves in sync with you—your delay, your new finish line. Brutal but fair.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH & CONTENT Section -->
+    <section class="faq-section">
+      <h2>Research & Content</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq12" tabindex="0">
+            How do you pick the 30 chapter titles?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq12">We mash keyword gap analysis, Reddit pain posts, YouTube question mining, competitor audits, and your own stories—only the overlap survives.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq13" tabindex="0">
+            Is the content ghostwritten fluff?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq13">No. It's your expertise, cleaned up by editors who cut jargon and keep your voice.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq14" tabindex="0">
+            Can I review and edit the manuscript?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq14">Absolutely—two revision rounds included. Nit-pick away; after that we bill hourly.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LICENSING & OWNERSHIP Section -->
+    <section class="faq-section">
+      <h2>Licensing & Ownership</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq15" tabindex="0">
+            Do I own the book?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq15">You own the words forever.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq16" tabindex="0">
+            What does the annual license cover?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq16">The BHG layouts, trademarks, templates, domains, and the tech stack that runs the funnel.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq17" tabindex="0">
+            What happens if I stop paying?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq17">The live funnel and branded email shut off on your anniversary date. The PDF stays yours, and you can export every lead first.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq18" tabindex="0">
+            Can I buy the system outright?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq18">After 24 months, pay twice the annual license and we transfer DNS, templates, and trademark for your title—clean break.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESULTS & ROI Section -->
+    <section class="faq-section">
+      <h2>Results & ROI</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq19" tabindex="0">
+            What results can I expect?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq19">Typical clients see 20-40% opt-ins, 15-25% webinar attendance, and 3-5% of leads booking calls within 60 days—traffic quality and follow-up speed decide the spread.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq20" tabindex="0">
+            Where does the traffic come from?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq20">Warm list, our tested Meta ad snapshot, and LinkedIn outreach scripts—or plug in any paid channel you like.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq21" tabindex="0">
+            Do you guarantee leads?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq21">Drive 1,000 targeted visitors in 90 days and get zero qualified leads? We refund the license. Show us the traffic receipts.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH & COMPLIANCE Section -->
+    <section class="faq-section">
+      <h2>Tech & Compliance</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq22" tabindex="0">
+            What platforms power the funnel?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq22">Go High Level (white-labelled as BookFunnels.ai), Zapier for mission-critical zaps, Cloudflare for domain redirects.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq23" tabindex="0">
+            How is my data protected?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq23">Interview recordings are encrypted at rest, BookFunnels.ai is SOC-2 hosted, and we'll sign an NDA. Your leads are your CSV—export anytime.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq24" tabindex="0">
+            Can it integrate with my existing CRM?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq24">Yes—webhooks or Zapier into HubSpot, ActiveCampaign, Salesforce, you name it. Keep the sub-account for automation unless your stack can clone it exactly.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq25" tabindex="0">
+            Will this pass industry compliance?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq25">We've cleared FINRA, ABA, and medical boards. Send your disclaimer boiler-plate; we'll weave it in.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MONEY & FINE PRINT Section -->
+    <section class="faq-section">
+      <h2>Money & Fine Print</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq26" tabindex="0">
+            What hidden costs should I expect?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq26">Printing, your ad spend, and any premium CRM plugins. Everything else is baked into setup, license, and optional monthly.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq27" tabindex="0">
+            What's your revision policy?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq27">Two rounds free. Third round or major scope change is $150/hr—keeps everyone decisive.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq28" tabindex="0">
+            How do cancellations and refunds work?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq28">Monthly services cancel anytime, effective end-of-month. Annual license is non-refundable unless the zero-lead guarantee kicks in.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUPPORT & FUTURE Section -->
+    <section class="faq-section">
+      <h2>Support & Future</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq29" tabindex="0">
+            What support do I get after launch?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq29">Slack responses in under 48 business hours, quarterly "Brutal Bottom Line" metric reviews, and knowledge-base SOPs for DIY tweaks.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq30" tabindex="0">
+            How do you keep the guide fresh?
+            <svg class="faq-chevron" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <div class="faq-answer" id="faq30">Every 18 months we offer a $750 Refresh Pack—updated stats, new stories, fresh cover tweak—so your BHG never smells stale.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="faq-cta">
+      <h3>Ready to Launch Your Lead Magnet?</h3>
+      <p>Stop chasing vanity metrics. Start generating real leads with a Brutal Guide™ that actually converts.</p>
+      <a href="/pricing" class="btn">View Pricing Plans</a>
+    </section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-offwhite bg-black mt-auto pt-12 pb-12">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-12">
+      <!-- Left: Logo + Blurb -->
+      <div class="flex-1 mb-8 md:mb-0">
+        <div class="uppercase text-lg font-bold tracking-tight font-condensed mb-2 text-[#FFFEFB]" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </div>
+        <p class="max-w-xs text-sm text-[#818B7F]">Brutally honest, zero-fluff guides for business owners who demand leads, not vanity projects.</p>
+      </div>
+      <!-- Center: Navigation -->
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <a href="#get-started" class="btn btn-red w-40 mb-2 text-center text-offwhite">Get Started</a>
+        <nav class="flex flex-wrap gap-4 text-base justify-center" style="color:#FFFEFB;">
+          <a href="/how-it-works" class="hover:underline text-offwhite">How It Works</a>
+          <a href="/pricing" class="hover:underline text-offwhite">Pricing</a>
+          <a href="/faq" class="hover:underline text-offwhite">FAQ</a>
+          <a href="/about" class="hover:underline text-offwhite">About</a>
+          <a href="/contact" class="hover:underline text-offwhite">Contact</a>
+        </nav>
+      </div>
+      <!-- Right: Contact/Social -->
+      <div class="flex-1 flex flex-col gap-4 items-end" style="color:#FFFEFB;">
+        <a href="mailto:hello@brutalguides.com" class="hover:underline text-base text-offwhite">Contact Us</a>
+        <div class="flex gap-4">
+          <a href="#" title="Twitter" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="LinkedIn" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="Instagram" class="hover:text-[#A74D4B] text-offwhite"></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
+      <div>
+        <a href="#" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
+        <a href="#" class="hover:underline text-offwhite">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS for mobile nav, dynamic year, and FAQ -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile nav with debugging
+    const mobileNavBtn = document.getElementById('mobileNavBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    
+    console.log('Mobile nav elements:', { mobileNavBtn, mobileNav, closeMobileNav });
+    
+    if (mobileNavBtn && mobileNav) {
+      mobileNavBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile nav button clicked');
+        mobileNav.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+      
+      // Handle keyboard navigation for span
+      mobileNavBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          mobileNav.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    } else {
+      console.error('Mobile nav elements not found');
+    }
+    
+    if (closeMobileNav && mobileNav) {
+      closeMobileNav.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Close mobile nav clicked');
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+      });
+    }
+    
+    // Close on background click
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          console.log('Background clicked, closing nav');
+          mobileNav.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var parent = btn.closest('.faq-item');
+        var open = parent.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(item){
+          item.classList.remove('open');
+          item.querySelector('.faq-question').setAttribute('aria-expanded','false');
+        });
+        if(!open) {
+          parent.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+        }
+      });
+      btn.addEventListener('keydown', function(e){
+        if(e.key==='Enter' || e.key===' '){
+          e.preventDefault(); btn.click();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
