@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | Brutal Guides™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Inter+Tight:wght@700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.264.1/font/lucide.css">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #FFFEFB;
+      color: #1A1A1A;
+      transition: background 0.3s, color 0.3s;
+      margin: 0;
+      min-height: 100vh;
+    }
+    
+    /* CRITICAL: Force hamburger button styling - must be at top */
+    button[id="mobileNavBtn"] {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 2px solid #999999 !important;
+      border-radius: 6px !important;
+      padding: 10px !important;
+      width: 44px !important;
+      height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      cursor: pointer !important;
+    }
+    button[id="mobileNavBtn"]:hover {
+      background-color: #f0f0f0 !important;
+      background: #f0f0f0 !important;
+      color: #A74D4B !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1A1A1A;
+        color: #FFFEFB;
+      }
+      .bg-offwhite { background: #1A1A1A !important; }
+      .text-black { color: #FFFEFB !important; }
+      .bg-black { background: #FFFEFB !important; }
+      .text-offwhite { color: #1A1A1A !important; }
+      .shadow-card { box-shadow: rgba(255,255,255,0.08) 0 0 10px !important; }
+      .border-red { border-color: #A74D4B !important;}
+      .terms-section { background: #1A1A1A !important; border-color: #333 !important; }
+      .terms-section h2 { color: #FFFEFB !important; }
+      .terms-section h3 { color: #FFFEFB !important; }
+      .terms-section p { color: #FFFEFB !important; }
+      .terms-section li { color: #FFFEFB !important; }
+      /* Dark mode mobile menu */
+      @media (prefers-color-scheme: dark) {
+        #mobileNav div[style*="background-color:#ffffff"] {
+          background-color: #1a1a1a !important;
+        }
+        #mobileNav h3[style*="color:#000000"],
+        #mobileNav a[style*="color:#000000"],
+        #mobileNav button[style*="color:#000000"] {
+          color: #ffffff !important;
+        }
+        #mobileNav button[style*="background-color:#f5f5f5"] {
+          background-color: #333333 !important;
+        }
+        #mobileNav a[style*="border-color:#e5e5e5"] {
+          border-color: #333333 !important;
+        }
+      }
+      
+      /* Dark mode hamburger button */
+      @media (prefers-color-scheme: dark) {
+        button#mobileNavBtn { 
+          background: #333333 !important; 
+          color: #ffffff !important; 
+          border-color: #555555 !important; 
+        }
+        button#mobileNavBtn:hover { 
+          background: #444444 !important; 
+          color: #A74D4B !important; 
+        }
+      }
+    }
+    .font-condensed {
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      font-stretch: condensed;
+    }
+    .shadow-card {
+      box-shadow: rgba(0,0,0,0.08) 0 0 10px;
+    }
+    /* Force hamburger button styling */
+    button#mobileNavBtn {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 1px solid #cccccc !important;
+      border-radius: 4px !important;
+      padding: 8px !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    button#mobileNavBtn:hover {
+      background: #f5f5f5 !important;
+      color: #A74D4B !important;
+    }
+    
+    .btn {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      outline: 2px solid transparent;
+      outline-offset: 0;
+      box-shadow: none;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn:focus-visible {
+      outline: 2px solid #818B7F;
+      outline-offset: 2px;
+    }
+    .btn-red {
+      background: #A74D4B;
+      color: #FFFEFB;
+      border: none;
+    }
+    .btn-red:hover, .btn-red:focus {
+      background: #922e2b;
+    }
+    .btn-outline-red {
+      background: #FFFEFB;
+      color: #A74D4B;
+      border: 2px solid #A74D4B;
+    }
+    .btn-outline-red:hover, .btn-outline-red:focus {
+      background: #A74D4B;
+      color: #FFFEFB;
+    }
+    .btn-offwhite {
+      background: #FFFEFB;
+      color: #1A1A1A;
+      border: none;
+    }
+    .btn-offwhite:hover, .btn-offwhite:focus {
+      background: #F3F2EF;
+      color: #A74D4B;
+    }
+    
+    /* Terms of Service Page specific styles */
+    .terms-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 20px 56px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+    .terms-hero {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .terms-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .terms-hero p {
+      font-size: 1.15rem;
+      color: #818B7F;
+      margin: 0 auto;
+      max-width: 600px;
+      font-weight: 400;
+    }
+    
+    /* Terms Section Styling */
+    .terms-section {
+      margin-bottom: 48px;
+    }
+    .terms-section h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 16px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      letter-spacing: -0.01em;
+    }
+    .terms-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+      margin-top: 24px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      letter-spacing: -0.01em;
+    }
+    .terms-content {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(36,37,35,0.06);
+      padding: 32px 28px 24px 28px;
+      border: 1px solid #EBE9E3;
+    }
+    .terms-section p {
+      font-size: 1.02rem;
+      color: #1A1A1A;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .terms-section ul {
+      margin: 16px 0;
+      padding-left: 20px;
+    }
+    .terms-section li {
+      font-size: 1.02rem;
+      color: #1A1A1A;
+      line-height: 1.6;
+      margin-bottom: 8px;
+    }
+    .terms-section strong {
+      color: #A74D4B;
+      font-weight: 600;
+    }
+    .terms-contact {
+      background: #A74D4B;
+      border-radius: 12px;
+      padding: 32px;
+      color: #FFFEFB;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .terms-contact h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #FFFEFB;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .terms-contact p {
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      color: #FFFEFB;
+    }
+    .terms-contact a {
+      color: #FFFEFB;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .terms-contact a:hover {
+      color: #F3F2EF;
+    }
+    
+    @media (max-width: 600px) {
+      .terms-hero h1 { font-size: 2rem; }
+      .terms-container {
+        padding-top: 100px;
+      }
+      .terms-content {
+        padding: 24px 20px;
+      }
+      .terms-contact {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;family=Inter&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-offwhite min-h-screen flex flex-col text-black tracking-normal" style="font-family:'Inter', Arial, sans-serif;">
+  <!-- NAV BAR -->
+  <header class="fixed top-0 left-0 w-full z-30 bg-offwhite shadow-sm border-b border-[#f6f5f2] backdrop-blur-sm h-16 flex items-center" style="height:64px;">
+    <div class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
+      <!-- Desktop: Left Logo, Desktop Nav Links + Button -->
+      <div class="hidden md:flex items-center justify-between w-full">
+        <!-- Logo (clickable to home) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-3xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Nav Links -->
+        <nav class="flex items-center gap-8 text-base font-medium">
+          <a href="/how-it-works" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">How It Works</a>
+          <a href="/pricing" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Pricing</a>
+          <a href="/faq" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">FAQ</a>
+          <a href="mailto:hello@brutalguides.com" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Contact</a>
+          <a href="https://calendly.com/mrstuartbell/bhg-start" class="ml-4 btn btn-red" style="border-radius:8px;">Get Started</a>
+        </nav>
+      </div>
+      
+      <!-- Mobile: Logo, Get Started Button, Hamburger -->
+      <div class="flex md:hidden items-center w-full">
+        <!-- Mobile Logo (Left side for spacing) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors flex-1" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Mobile Controls (Right side) -->
+        <div class="flex items-center gap-3">
+          <a href="https://calendly.com/mrstuartbell/bhg-start" class="btn btn-red text-sm px-3 py-2 whitespace-nowrap" style="border-radius:6px;">Get Started</a>
+          <span id="mobileNavBtn" role="button" tabindex="0" aria-label="Open menu" style="display:inline-block;width:44px;height:44px;line-height:44px;text-align:center;background-color:#ffffff;border:2px solid #666;border-radius:6px;cursor:pointer;font-size:18px;font-weight:bold;color:#000;user-select:none;">
+            ☰
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile drawer (solid backgrounds for visibility) -->
+    <div id="mobileNav" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[9999]" style="display:none;">
+      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] shadow-2xl flex flex-col" style="background-color:#ffffff;">
+        <div class="flex justify-between items-center p-4 border-b" style="background-color:#ffffff;border-color:#e5e5e5;">
+          <h3 class="text-lg font-semibold" style="color:#000000;">Menu</h3>
+          <button id="closeMobileNav" class="p-2 rounded" style="color:#000000;background-color:#f5f5f5;min-width:40px;min-height:40px;">
+            ✕
+          </button>
+        </div>
+        <div class="flex flex-col p-6 gap-4 flex-1" style="background-color:#ffffff;">
+          <a href="/how-it-works" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">How It Works</a>
+          <a href="/pricing" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Pricing</a>
+          <a href="/faq" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">FAQ</a>
+          <a href="mailto:hello@brutalguides.com" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Contact</a>
+          <a href="https://calendly.com/mrstuartbell/bhg-start" class="btn btn-red text-lg mt-4">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TERMS OF SERVICE CONTENT -->
+  <section class="terms-container">
+    <!-- Hero -->
+    <header class="terms-hero">
+      <h1>Terms of Service</h1>
+      <p>The legal framework for using Brutal Guides™ services. Clear terms, fair practices, and mutual respect.</p>
+    </header>
+
+    <!-- Last Updated -->
+    <div class="terms-section">
+      <div class="terms-content">
+        <p><strong>Last Updated:</strong> June 25, 2025</p>
+        <p>These Terms of Service ("Terms") govern your use of Brutal Guides™ services and website. By using our services, you agree to these Terms.</p>
+      </div>
+    </div>
+
+    <!-- Acceptance of Terms -->
+    <section class="terms-section">
+      <h2>1. Acceptance of Terms</h2>
+      <div class="terms-content">
+        <p>By accessing or using Brutal Guides™ services, you agree to be bound by these Terms and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using our services.</p>
+        <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of our services constitutes acceptance of the modified Terms.</p>
+      </div>
+    </section>
+
+    <!-- Service Description -->
+    <section class="terms-section">
+      <h2>2. Service Description</h2>
+      <div class="terms-content">
+        <p>Brutal Guides™ provides professional book writing, editing, design, and marketing funnel services. Our services include but are not limited to:</p>
+        <ul>
+          <li><strong>Book Creation:</strong> Custom "Brutally Honest Guide™" development based on client interviews and research</li>
+          <li><strong>Design Services:</strong> Book layout, cover design, and print-ready file preparation</li>
+          <li><strong>Marketing Funnels:</strong> Landing pages, email sequences, and lead generation systems</li>
+          <li><strong>Technology Services:</strong> CRM setup, automation, and integration services</li>
+          <li><strong>Consulting:</strong> Strategic guidance and ongoing support</li>
+        </ul>
+        <p>Specific deliverables and timelines are outlined in individual service agreements or project proposals.</p>
+      </div>
+    </section>
+
+    <!-- User Responsibilities -->
+    <section class="terms-section">
+      <h2>3. User Responsibilities</h2>
+      <div class="terms-content">
+        <p>As a client of Brutal Guides™, you agree to:</p>
+        <ul>
+          <li><strong>Provide Accurate Information:</strong> Supply truthful, accurate, and complete information for your project</li>
+          <li><strong>Participate in Interviews:</strong> Attend scheduled interviews and provide requested materials in a timely manner</li>
+          <li><strong>Review and Approve:</strong> Review deliverables within specified timeframes and provide clear feedback</li>
+          <li><strong>Payment:</strong> Make payments according to agreed terms and schedules</li>
+          <li><strong>Compliance:</strong> Ensure your use of our deliverables complies with all applicable laws and regulations</li>
+          <li><strong>Professional Conduct:</strong> Maintain respectful and professional communication with our team</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Payment Terms -->
+    <section class="terms-section">
+      <h2>4. Payment Terms</h2>
+      <div class="terms-content">
+        <h3>Pricing and Billing</h3>
+        <p>Service fees are outlined in your specific service agreement. Pricing may include:</p>
+        <ul>
+          <li>One-time setup fees for book creation and initial funnel setup</li>
+          <li>Annual licensing fees for use of proprietary templates and systems</li>
+          <li>Monthly recurring fees for ongoing services and support</li>
+          <li>Additional fees for revisions beyond included scope</li>
+        </ul>
+
+        <h3>Payment Schedule</h3>
+        <ul>
+          <li><strong>Setup Fees:</strong> Due upon contract signing or as specified in your agreement</li>
+          <li><strong>Recurring Fees:</strong> Billed monthly or annually in advance</li>
+          <li><strong>Late Payments:</strong> Subject to 1.5% monthly service charge after 30 days</li>
+          <li><strong>Payment Methods:</strong> Credit card, ACH transfer, or other approved methods</li>
+        </ul>
+
+        <h3>Refunds and Cancellations</h3>
+        <p>Refund policies vary by service tier and are specified in individual agreements. Generally:</p>
+        <ul>
+          <li>Setup fees are non-refundable once work has commenced</li>
+          <li>Monthly services can be cancelled with 30 days notice</li>
+          <li>Annual licenses are non-refundable except under specific guarantee conditions</li>
+          <li>Refunds for guarantee violations require proof of traffic and qualified lead metrics</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Intellectual Property -->
+    <section class="terms-section">
+      <h2>5. Intellectual Property Rights</h2>
+      <div class="terms-content">
+        <h3>Client Content Ownership</h3>
+        <p>You retain ownership of:</p>
+        <ul>
+          <li>Your original ideas, stories, and expertise shared during interviews</li>
+          <li>The written content of your completed Brutally Honest Guide™</li>
+          <li>Your business information and proprietary data</li>
+        </ul>
+
+        <h3>Brutal Guides™ Property</h3>
+        <p>We retain ownership of:</p>
+        <ul>
+          <li>The "Brutally Honest Guide™" trademark and branding elements</li>
+          <li>Proprietary templates, layouts, and design systems</li>
+          <li>Software, technology platforms, and automation tools</li>
+          <li>Marketing methodologies and funnel frameworks</li>
+          <li>Rights to publish and distribute your completed Brutally Honest Guide™</li>
+        </ul>
+
+        <h3>Licensed Use</h3>
+        <p>Your annual license grants you the right to use our proprietary elements for your specific book and funnel. This license is non-transferable and subject to ongoing compliance with these Terms and those of your service agreement.</p>
+      </div>
+    </section>
+
+    <!-- Project Timeline and Delays -->
+    <section class="terms-section">
+      <h2>6. Project Timeline and Delays</h2>
+      <div class="terms-content">
+        <p>Project timelines are estimates based on typical client responsiveness. Actual delivery dates depend on:</p>
+        <ul>
+          <li>Timely completion of client interviews and feedback sessions</li>
+          <li>Prompt review and approval of deliverables</li>
+          <li>Availability of required materials and information</li>
+          <li>Scope changes or additional revision requests</li>
+        </ul>
+        <p><strong>Client-Caused Delays:</strong> If project delays result from client unavailability, late feedback, or scope changes, delivery timelines will be adjusted accordingly without penalty to Brutal Guides™.</p>
+        <p><strong>Force Majeure:</strong> We are not liable for delays caused by circumstances beyond our reasonable control, including but not limited to natural disasters, pandemics, or technology failures.</p>
+      </div>
+    </section>
+
+    <!-- Quality and Revisions -->
+    <section class="terms-section">
+      <h2>7. Quality Standards and Revisions</h2>
+      <div class="terms-content">
+        <p>We commit to delivering professional-quality work that meets industry standards. Our revision policy includes:</p>
+        <ul>
+          <li><strong>Included Revisions:</strong> Two rounds of revisions are included in most service packages</li>
+          <li><strong>Additional Revisions:</strong> Beyond included revisions, changes are billed at $150/hour</li>
+          <li><strong>Scope Changes:</strong> Significant changes to project scope may require contract amendments</li>
+          <li><strong>Quality Issues:</strong> We will correct any work that fails to meet professional standards at no charge</li>
+        </ul>
+        <p><strong>Client Approval:</strong> Your approval of deliverables constitutes acceptance of the work and waives rights to future revisions for that deliverable unless quality issues are identified.</p>
+      </div>
+    </section>
+
+    <!-- Limitation of Liability -->
+    <section class="terms-section">
+      <h2>8. Limitation of Liability</h2>
+      <div class="terms-content">
+        <p>To the maximum extent permitted by law:</p>
+        <ul>
+          <li>Our total liability for any claims shall not exceed the amount you paid for services in the 12 months preceding the claim</li>
+          <li>We are not liable for indirect, incidental, special, or consequential damages</li>
+          <li>We are not responsible for lost profits, business interruption, or data loss</li>
+          <li>Our liability is limited to direct damages directly caused by our breach of contract or negligence</li>
+        </ul>
+        <p><strong>Client Responsibility:</strong> You are solely responsible for how you use our deliverables and any results achieved through your marketing efforts.</p>
+      </div>
+    </section>
+
+    <!-- Termination -->
+    <section class="terms-section">
+      <h2>9. Termination</h2>
+      <div class="terms-content">
+        <h3>Termination by Client</h3>
+        <ul>
+          <li>Monthly services can be cancelled with 30 days written/email notice</li>
+          <li>Annual licenses cannot be cancelled mid-term except under guarantee conditions</li>
+          <li>Termination does not relieve you of payment obligations for services already provided</li>
+        </ul>
+
+        <h3>Termination by Brutal Guides™</h3>
+        <p>We may terminate services immediately if you:</p>
+        <ul>
+          <li>Fail to pay fees when due</li>
+          <li>Breach these Terms or your service agreement</li>
+          <li>Engage in abusive or threatening behavior toward our team</li>
+          <li>Use our services for illegal or unethical purposes</li>
+        </ul>
+
+        <h3>Effect of Termination</h3>
+        <p>Upon termination:</p>
+        <ul>
+          <li>Your access to licensed templates and technology will cease</li>
+          <li>We will provide a final export of your leads depending on your service</li>
+          <li>You retain ownership of your completed book content (the text), but not the branded, licensed elements of the products</li>
+          <li>All unpaid fees become immediately due</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Confidentiality -->
+    <section class="terms-section">
+      <h2>10. Confidentiality</h2>
+      <div class="terms-content">
+        <p>We respect the confidential nature of your business information and agree to:</p>
+        <ul>
+          <li>Keep all client information confidential and secure</li>
+          <li>Use client information solely for providing contracted services</li>
+          <li>Not disclose client information to third parties without consent</li>
+          <li>Return or destroy confidential information upon request</li>
+        </ul>
+        <p><strong>Exceptions:</strong> We may disclose information when required by law or to protect our legal rights.</p>
+        <p><strong>Public Information:</strong> Information that becomes publicly available through your own actions is not considered confidential.</p>
+      </div>
+    </section>
+
+    <!-- Governing Law -->
+    <section class="terms-section">
+      <h2>11. Governing Law and Disputes</h2>
+      <div class="terms-content">
+        <p>These Terms are governed by the laws of the United States and the state in which Brutal Guides™ is incorporated, without regard to conflict of law principles.</p>
+        
+        <h3>Dispute Resolution</h3>
+        <p>Any disputes arising from these Terms or our services shall be resolved through:</p>
+        <ul>
+          <li><strong>Good Faith Negotiation:</strong> First attempt at resolution through direct communication</li>
+          <li><strong>Mediation:</strong> If negotiation fails, binding mediation through a mutually agreed mediator</li>
+          <li><strong>Arbitration:</strong> If mediation fails, binding arbitration under American Arbitration Association rules</li>
+        </ul>
+        <p><strong>Class Action Waiver:</strong> You agree not to participate in class action lawsuits against Brutal Guides™.</p>
+      </div>
+    </section>
+
+    <!-- Miscellaneous -->
+    <section class="terms-section">
+      <h2>12. Miscellaneous</h2>
+      <div class="terms-content">
+        <h3>Entire Agreement</h3>
+        <p>These Terms, together with your specific service agreement, constitute the entire agreement between you and Brutal Guides™.</p>
+
+        <h3>Severability</h3>
+        <p>If any provision of these Terms is found to be unenforceable, the remaining provisions shall remain in full force and effect.</p>
+
+        <h3>Assignment</h3>
+        <p>You may not assign your rights or obligations under these Terms without our written consent. We may assign our rights and obligations to any third party.</p>
+
+        <h3>Force Majeure</h3>
+        <p>Neither party shall be liable for any failure to perform due to circumstances beyond their reasonable control.</p>
+
+        <h3>Notices</h3>
+        <p>All notices under these Terms must be in writing and sent to the addresses specified in your service agreement or to hello@brutalguides.com.</p>
+
+        <h3>Waiver</h3>
+        <p>Our failure to enforce any right or provision in these Terms shall not constitute a waiver of such right or provision.</p>
+      </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="terms-contact">
+      <h3>Questions About These Terms?</h3>
+      <p>If you have questions about these Terms of Service or need clarification on any provisions, please contact us:</p>
+      <p>
+        <strong>Email:</strong> <a href="mailto:hello@brutalguides.com">hello@brutalguides.com</a><br>
+        <strong>Get Started:</strong> <a href="https://calendly.com/mrstuartbell/bhg-start">Schedule a Consultation</a>
+      </p>
+      <p>We're committed to fair and transparent business practices.</p>
+    </section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-offwhite bg-black mt-auto pt-12 pb-12">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-12">
+      <!-- Left: Logo + Blurb -->
+      <div class="flex-1 mb-8 md:mb-0">
+        <div class="uppercase text-lg font-bold tracking-tight font-condensed mb-2 text-[#FFFEFB]" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </div>
+        <p class="max-w-xs text-sm text-[#818B7F]">Brutally honest, zero-fluff guides for business owners who demand leads, not vanity projects.</p>
+      </div>
+      <!-- Center: Navigation -->
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <a href="https://calendly.com/mrstuartbell/bhg-start" class="btn btn-red w-40 mb-2 text-center text-offwhite">Get Started</a>
+        <nav class="flex flex-wrap gap-4 text-base justify-center" style="color:#FFFEFB;">
+          <a href="/how-it-works" class="hover:underline text-offwhite">How It Works</a>
+          <a href="/pricing" class="hover:underline text-offwhite">Pricing</a>
+          <a href="/faq" class="hover:underline text-offwhite">FAQ</a>
+          <a href="/about" class="hover:underline text-offwhite">About</a>
+          <a href="mailto:hello@brutalguides.com" class="hover:underline text-offwhite">Contact</a>
+        </nav>
+      </div>
+      <!-- Right: Contact/Social -->
+      <div class="flex-1 flex flex-col gap-4 items-end" style="color:#FFFEFB;">
+        <a href="mailto:hello@brutalguides.com" class="hover:underline text-base text-offwhite">Contact Us</a>
+        <div class="flex gap-4">
+          <a href="#" title="Twitter" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="LinkedIn" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="Instagram" class="hover:text-[#A74D4B] text-offwhite"></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
+      <div>
+        <a href="/privacy" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
+        <a href="/tos" class="hover:underline text-offwhite">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS for mobile nav and dynamic year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile nav with debugging
+    const mobileNavBtn = document.getElementById('mobileNavBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    
+    console.log('Mobile nav elements:', { mobileNavBtn, mobileNav, closeMobileNav });
+    
+    if (mobileNavBtn && mobileNav) {
+      mobileNavBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile nav button clicked');
+        mobileNav.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+      
+      // Handle keyboard navigation for span
+      mobileNavBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          mobileNav.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    } else {
+      console.error('Mobile nav elements not found');
+    }
+    
+    if (closeMobileNav && mobileNav) {
+      closeMobileNav.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Close mobile nav clicked');
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+      });
+    }
+    
+    // Close on background click
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          console.log('Background clicked, closing nav');
+          mobileNav.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
