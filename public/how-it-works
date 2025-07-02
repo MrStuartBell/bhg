@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works | Brutal Guides™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Inter+Tight:wght@700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.264.1/font/lucide.css">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #FFFEFB;
+      color: #1A1A1A;
+      transition: background 0.3s, color 0.3s;
+      margin: 0;
+      min-height: 100vh;
+    }
+    
+    /* CRITICAL: Force hamburger button styling - must be at top */
+    button[id="mobileNavBtn"] {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 2px solid #999999 !important;
+      border-radius: 6px !important;
+      padding: 10px !important;
+      width: 44px !important;
+      height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      cursor: pointer !important;
+    }
+    button[id="mobileNavBtn"]:hover {
+      background-color: #f0f0f0 !important;
+      background: #f0f0f0 !important;
+      color: #A74D4B !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1A1A1A;
+        color: #FFFEFB;
+      }
+      .bg-offwhite { background: #1A1A1A !important; }
+      .text-black { color: #FFFEFB !important; }
+      .bg-black { background: #FFFEFB !important; }
+      .text-offwhite { color: #1A1A1A !important; }
+      .shadow-card { box-shadow: rgba(255,255,255,0.08) 0 0 10px !important; }
+      .border-red { border-color: #A74D4B !important;}
+      .how-step { background: #1A1A1A !important; border-color: #333 !important; }
+      .how-step-title { color: #FFFEFB !important; }
+      .how-step-description { color: #FFFEFB !important; }
+      .how-step-benefit { color: #818B7F !important; }
+      .step-marker { background: #333 !important; border-color: #555 !important; color: #A74D4B !important; }
+      .why-section { background: #1A1A1A !important; border-color: #333 !important; }
+      .why-title { color: #FFFEFB !important; }
+      .why-list { color: #FFFEFB !important; }
+      .funnel-table-label { color: #818B7F !important; }
+      .funnel-table-content { color: #FFFEFB !important; }
+      /* Dark mode mobile menu */
+      @media (prefers-color-scheme: dark) {
+        #mobileNav div[style*="background-color:#ffffff"] {
+          background-color: #1a1a1a !important;
+        }
+        #mobileNav h3[style*="color:#000000"],
+        #mobileNav a[style*="color:#000000"],
+        #mobileNav button[style*="color:#000000"] {
+          color: #ffffff !important;
+        }
+        #mobileNav button[style*="background-color:#f5f5f5"] {
+          background-color: #333333 !important;
+        }
+        #mobileNav a[style*="border-color:#e5e5e5"] {
+          border-color: #333333 !important;
+        }
+      }
+      
+      /* Dark mode hamburger button */
+      @media (prefers-color-scheme: dark) {
+        button#mobileNavBtn { 
+          background: #333333 !important; 
+          color: #ffffff !important; 
+          border-color: #555555 !important; 
+        }
+        button#mobileNavBtn:hover { 
+          background: #444444 !important; 
+          color: #A74D4B !important; 
+        }
+      }
+    }
+    .font-condensed {
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      font-stretch: condensed;
+    }
+    .shadow-card {
+      box-shadow: rgba(0,0,0,0.08) 0 0 10px;
+    }
+    /* Force hamburger button styling */
+    button#mobileNavBtn {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 1px solid #cccccc !important;
+      border-radius: 4px !important;
+      padding: 8px !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    button#mobileNavBtn:hover {
+      background: #f5f5f5 !important;
+      color: #A74D4B !important;
+    }
+    
+    .btn {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      outline: 2px solid transparent;
+      outline-offset: 0;
+      box-shadow: none;
+    }
+    .btn:focus-visible {
+      outline: 2px solid #818B7F;
+      outline-offset: 2px;
+    }
+    .btn-red {
+      background: #A74D4B;
+      color: #FFFEFB;
+      border: none;
+    }
+    .btn-red:hover, .btn-red:focus {
+      background: #922e2b;
+    }
+    .btn-outline-red {
+      background: #FFFEFB;
+      color: #A74D4B;
+      border: 2px solid #A74D4B;
+    }
+    .btn-outline-red:hover, .btn-outline-red:focus {
+      background: #A74D4B;
+      color: #FFFEFB;
+    }
+    .btn-offwhite {
+      background: #FFFEFB;
+      color: #1A1A1A;
+      border: none;
+    }
+    .btn-offwhite:hover, .btn-offwhite:focus {
+      background: #F3F2EF;
+      color: #A74D4B;
+    }
+    
+    /* How It Works Page specific styles */
+    .how-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 20px 56px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+    .how-hero {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .how-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: #1A1A1A;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .how-hero p {
+      font-size: 1.15rem;
+      color: #818B7F;
+      margin: 0 auto;
+      max-width: 600px;
+      font-weight: 400;
+    }
+    
+    /* Step Styling */
+    .how-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .how-step {
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(36,37,35,0.06);
+      padding: 32px 28px 24px 28px;
+      border: 1px solid #EBE9E3;
+      position: relative;
+      transition: box-shadow 0.18s, border-color 0.18s;
+    }
+    .how-step:hover {
+      box-shadow: 0 4px 18px rgba(167,77,75,0.08);
+      border-color: #A74D4B;
+    }
+    .step-marker {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #A74D4B;
+      color: #FFFEFB;
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(167,77,75,0.15);
+    }
+    .how-step-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      letter-spacing: -0.01em;
+    }
+    .how-step-description {
+      font-size: 1.02rem;
+      color: #1A1A1A;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .how-step-benefit {
+      font-size: 1rem;
+      color: #818B7F;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .how-step-benefit strong {
+      color: #A74D4B;
+      font-style: normal;
+      font-weight: 600;
+    }
+    
+    /* Funnel Table Styling */
+    .funnel-table {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .funnel-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .funnel-label {
+      min-width: 100px;
+      font-weight: 600;
+      color: #A74D4B;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .funnel-content {
+      flex: 1;
+      line-height: 1.6;
+    }
+    
+    /* Why Section Styling */
+    .why-section {
+      background: #A74D4B;
+      border-radius: 12px;
+      padding: 48px 32px;
+      color: #FFFEFB;
+      margin-top: 32px;
+    }
+    .why-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      text-align: center;
+    }
+    .why-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .why-list li::before {
+      content: "✓";
+      color: #FFFEFB;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+    .why-list strong {
+      color: #FFFEFB;
+      font-weight: 600;
+    }
+    
+    /* CTA Section */
+    .how-cta {
+      background: #fff;
+      border-radius: 12px;
+      padding: 48px 32px;
+      text-align: center;
+      border: 2px solid #A74D4B;
+      margin-top: 48px;
+    }
+    .how-cta h3 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1A1A1A;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .how-cta p {
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      color: #818B7F;
+    }
+    .how-cta .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .how-cta .btn {
+      padding: 12px 32px;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    @media (max-width: 600px) {
+      .how-hero h1 { font-size: 2rem; }
+      .how-container {
+        padding-top: 100px;
+      }
+      .how-step {
+        padding: 24px 20px;
+      }
+      .why-section {
+        padding: 32px 20px;
+      }
+      .how-cta {
+        padding: 32px 20px;
+      }
+      .funnel-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .funnel-label {
+        min-width: auto;
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;family=Inter&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-offwhite min-h-screen flex flex-col text-black tracking-normal" style="font-family:'Inter', Arial, sans-serif;">
+  <!-- NAV BAR -->
+  <header class="fixed top-0 left-0 w-full z-30 bg-offwhite shadow-sm border-b border-[#f6f5f2] backdrop-blur-sm h-16 flex items-center" style="height:64px;">
+    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
+      <div>
+        <a href="#" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
+        <a href="#" class="hover:underline text-offwhite">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS for mobile nav and dynamic year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile nav with debugging
+    const mobileNavBtn = document.getElementById('mobileNavBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    
+    console.log('Mobile nav elements:', { mobileNavBtn, mobileNav, closeMobileNav });
+    
+    if (mobileNavBtn && mobileNav) {
+      mobileNavBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile nav button clicked');
+        mobileNav.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+      
+      // Handle keyboard navigation for span
+      mobileNavBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          mobileNav.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    } else {
+      console.error('Mobile nav elements not found');
+    }
+    
+    if (closeMobileNav && mobileNav) {
+      closeMobileNav.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Close mobile nav clicked');
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+      });
+    }
+    
+    // Close on background click
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          console.log('Background clicked, closing nav');
+          mobileNav.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html> class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
+      <!-- Desktop: Left Logo, Desktop Nav Links + Button -->
+      <div class="hidden md:flex items-center justify-between w-full">
+        <!-- Logo (clickable to home) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-3xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Nav Links -->
+        <nav class="flex items-center gap-8 text-base font-medium">
+          <a href="/how-it-works" class="text-[#A74D4B] transition-colors px-1 py-1 rounded">How It Works</a>
+          <a href="/pricing" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Pricing</a>
+          <a href="/faq" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">FAQ</a>
+          <a href="/contact" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Contact</a>
+          <a href="#get-started" class="ml-4 btn btn-red" style="border-radius:8px;">Get Started</a>
+        </nav>
+      </div>
+      
+      <!-- Mobile: Logo, Get Started Button, Hamburger -->
+      <div class="flex md:hidden items-center w-full">
+        <!-- Mobile Logo (Left side for spacing) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors flex-1" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Mobile Controls (Right side) -->
+        <div class="flex items-center gap-3">
+          <a href="#get-started" class="btn btn-red text-sm px-3 py-2 whitespace-nowrap" style="border-radius:6px;">Get Started</a>
+          <span id="mobileNavBtn" role="button" tabindex="0" aria-label="Open menu" style="display:inline-block;width:44px;height:44px;line-height:44px;text-align:center;background-color:#ffffff;border:2px solid #666;border-radius:6px;cursor:pointer;font-size:18px;font-weight:bold;color:#000;user-select:none;">
+            ☰
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile drawer (solid backgrounds for visibility) -->
+    <div id="mobileNav" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[9999]" style="display:none;">
+      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] shadow-2xl flex flex-col" style="background-color:#ffffff;">
+        <div class="flex justify-between items-center p-4 border-b" style="background-color:#ffffff;border-color:#e5e5e5;">
+          <h3 class="text-lg font-semibold" style="color:#000000;">Menu</h3>
+          <button id="closeMobileNav" class="p-2 rounded" style="color:#000000;background-color:#f5f5f5;min-width:40px;min-height:40px;">
+            ✕
+          </button>
+        </div>
+        <div class="flex flex-col p-6 gap-4 flex-1" style="background-color:#ffffff;">
+          <a href="/how-it-works" class="text-xl py-4 px-2 border-b font-medium" style="color:#A74D4B;border-color:#e5e5e5;">How It Works</a>
+          <a href="/pricing" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Pricing</a>
+          <a href="/faq" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">FAQ</a>
+          <a href="/contact" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Contact</a>
+          <a href="#get-started" class="btn btn-red text-lg mt-4">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HOW IT WORKS CONTENT -->
+  <section class="how-container">
+    <!-- Hero -->
+    <header class="how-hero">
+      <h1>How It Works</h1>
+      <p>Brutally Honest Guides turn one focused conversation with you into a niche-crushing book funnel that feeds your calendar with the right prospects—without you wrestling with ghost-writers, tech setups, or "bestseller" vanity fluff.</p>
+    </header>
+
+    <!-- Steps -->
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-marker">1</div>
+        <h2 class="how-step-title">Choose a Tight Niche</h2>
+        <p class="how-step-description">
+          Pick the exact pocket of customers you want more of—"401(k) rollover refugees," "crypto Roth IRA die-hards," "new-construction dentists," whatever. The narrower the bullseye, the easier the win.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> You stop sounding like every other "financial planner" and start owning a problem real people are already Googling.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">2</div>
+        <h2 class="how-step-title">Nail the Title & Subtitle</h2>
+        <p class="how-step-description">
+          On a quick call we stress-test angles, swipe the language prospects actually use, and lock a title + subtitle that grabs attention and telegraphs value in five seconds flat.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> Your book cover works like a mini-billboard in ads, feeds, and inboxes—no curiosity gaps, just "I need that."</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">3</div>
+        <h2 class="how-step-title">Design the Call-to-Action</h2>
+        <p class="how-step-description">
+          Before a word is written we agree on the single next step you want readers to take: book a call, start an assessment, join a webinar—whatever drives revenue fastest for you.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> Every chapter pushes toward measurable pipeline, not "gee-whiz" readership stats.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">4</div>
+        <h2 class="how-step-title">We Do the Deep-Dive Research</h2>
+        <p class="how-step-description">
+          Our team pulls real search data, forum threads, and competitor blind spots to surface the 100+ questions prospects are already asking.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> Your book answers their burning questions before they hit back on the browser—instant authority.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">5</div>
+        <h2 class="how-step-title">Build the 35-Topic Blueprint → Refine to 30</h2>
+        <p class="how-step-description">
+          We draft a 35-chapter outline, jump on a quick review call, swap anything you hate, add anything you love, and lock the final 30.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> Zero blank-page syndrome and a structure engineered for conversational flow.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">6</div>
+        <h2 class="how-step-title">Zero-Pressure Interview</h2>
+        <p class="how-step-description">
+          You talk. We record. 90 minutes, tops. No "please write a chapter on Tuesday" homework. We extract your voice, stories, and hot takes while you sip coffee.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> One afternoon of your life = a ~150-page asset that sounds like you wrote every word.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">7</div>
+        <h2 class="how-step-title">Expert Editing & Content Amplification</h2>
+        <p class="how-step-description">
+          Our editors merge your interview with the research, tighten the narrative, inject SEO-friendly phrasing, and add "Brutal Bottom Line" takeaways at the end of each chapter.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> Readers feel heard and guided; Google notices the substance.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">8</div>
+        <h2 class="how-step-title">Funnel Build-Out (Plan Dependent)</h2>
+        <div class="funnel-table">
+          <div class="funnel-row">
+            <div class="funnel-label">Book-Only</div>
+            <div class="funnel-content">
+              • Finished PDF + print-ready files<br>
+              • DIY quick-launch guide
+            </div>
+          </div>
+          <div class="funnel-row">
+            <div class="funnel-label">Essentials</div>
+            <div class="funnel-content">
+              • High-conversion landing page<br>
+              • Checklist or assessment lead magnet<br>
+              • Autoresponder that moves leads to your CTA
+            </div>
+          </div>
+          <div class="funnel-row">
+            <div class="funnel-label">Everything</div>
+            <div class="funnel-content">
+              • Interactive quiz / scorecard to qualify leads<br>
+              • Fortnightly value emails (done for you)<br>
+              • Social posts to keep you visible<br>
+              • Monthly strategy call to tweak & scale
+            </div>
+          </div>
+        </div>
+        <p class="how-step-benefit"><strong>Benefit:</strong> Choose the horsepower you need—nothing more, nothing less.</p>
+      </div>
+
+      <div class="how-step">
+        <div class="step-marker">9</div>
+        <h2 class="how-step-title">Launch & Iterate</h2>
+        <p class="how-step-description">
+          <strong>Book-Only:</strong> follow the guide and fire when ready.<br>
+          <strong>Essentials & Everything:</strong> we run a live launch call, hook up tracking, and fine-tune based on real-time data.
+        </p>
+        <p class="how-step-benefit"><strong>Benefit:</strong> Fast start, continuous improvement, and a funnel you can actually understand.</p>
+      </div>
+    </div>
+
+    <!-- Why This Works -->
+    <section class="why-section">
+      <h3 class="why-title">Why This Works</h3>
+      <ul class="why-list">
+        <li><strong>Authority Short-Cut:</strong> A real book in a niche beats generic blogs every day.</li>
+        <li><strong>Conversation Magnet:</strong> Each chapter is a built-in email, DM, or social post prompt.</li>
+        <li><strong>Ridiculously Low Time Ask:</strong> ~2 hours total on your calendar. We handle the rest.</li>
+        <li><strong>Flexible Stack:</strong> Keep it DIY, hand off the tech, or let us run the whole engine.</li>
+        <li><strong>Evergreen Asset:</strong> Unlike ads, your book keeps converting long after you've moved on.</li>
+      </ul>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="how-cta">
+      <h3>Ready to Get Started?</h3>
+      <p>Hit Schedule a Call or Get Started—and let's put a Brutally Honest Guide to work for you.</p>
+      <div class="btn-group">
+        <a href="#" class="btn btn-outline-red">Schedule a Call</a>
+        <a href="#" class="btn btn-red">Get Started</a>
+      </div>
+    </section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-offwhite bg-black mt-auto pt-12 pb-12">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-12">
+      <!-- Left: Logo + Blurb -->
+      <div class="flex-1 mb-8 md:mb-0">
+        <div class="uppercase text-lg font-bold tracking-tight font-condensed mb-2 text-[#FFFEFB]" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </div>
+        <p class="max-w-xs text-sm text-[#818B7F]">Brutally honest, zero-fluff guides for business owners who demand leads, not vanity projects.</p>
+      </div>
+      <!-- Center: Navigation -->
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <a href="#get-started" class="btn btn-red w-40 mb-2 text-center text-offwhite">Get Started</a>
+        <nav class="flex flex-wrap gap-4 text-base justify-center" style="color:#FFFEFB;">
+          <a href="/how-it-works" class="hover:underline text-offwhite">How It Works</a>
+          <a href="/pricing" class="hover:underline text-offwhite">Pricing</a>
+          <a href="/faq" class="hover:underline text-offwhite">FAQ</a>
+          <a href="/about" class="hover:underline text-offwhite">About</a>
+          <a href="/contact" class="hover:underline text-offwhite">Contact</a>
+        </nav>
+      </div>
+      <!-- Right: Contact/Social -->
+      <div class="flex-1 flex flex-col gap-4 items-end" style="color:#FFFEFB;">
+        <a href="mailto:hello@brutalguides.com" class="hover:underline text-base text-offwhite">Contact Us</a>
+        <div class="flex gap-4">
+          <a href="#" title="Twitter" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="LinkedIn" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="Instagram" class="hover:text-[#A74D4B] text-offwhite"></a>
+        </div>
+      </div>
+    </div>
+    <div
