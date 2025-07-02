@@ -376,69 +376,7 @@
 <body class="bg-offwhite min-h-screen flex flex-col text-black tracking-normal" style="font-family:'Inter', Arial, sans-serif;">
   <!-- NAV BAR -->
   <header class="fixed top-0 left-0 w-full z-30 bg-offwhite shadow-sm border-b border-[#f6f5f2] backdrop-blur-sm h-16 flex items-center" style="height:64px;">
-    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
-      <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
-      <div>
-        <a href="#" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
-        <a href="#" class="hover:underline text-offwhite">Terms of Service</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- JS for mobile nav and dynamic year -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Mobile nav with debugging
-    const mobileNavBtn = document.getElementById('mobileNavBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
-    
-    console.log('Mobile nav elements:', { mobileNavBtn, mobileNav, closeMobileNav });
-    
-    if (mobileNavBtn && mobileNav) {
-      mobileNavBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Mobile nav button clicked');
-        mobileNav.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-      });
-      
-      // Handle keyboard navigation for span
-      mobileNavBtn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          mobileNav.style.display = 'block';
-          document.body.style.overflow = 'hidden';
-        }
-      });
-    } else {
-      console.error('Mobile nav elements not found');
-    }
-    
-    if (closeMobileNav && mobileNav) {
-      closeMobileNav.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('Close mobile nav clicked');
-        mobileNav.style.display = 'none';
-        document.body.style.overflow = ''; // Restore scrolling
-      });
-    }
-    
-    // Close on background click
-    if (mobileNav) {
-      mobileNav.addEventListener('click', function(e) {
-        if (e.target === mobileNav) {
-          console.log('Background clicked, closing nav');
-          mobileNav.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
-    }
-  </script>
-
-</body>
-</html> class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
+    <div class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
       <!-- Desktop: Left Logo, Desktop Nav Links + Button -->
       <div class="hidden md:flex items-center justify-between w-full">
         <!-- Logo (clickable to home) -->
@@ -660,4 +598,66 @@
         </div>
       </div>
     </div>
-    <div
+    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
+      <div>
+        <a href="#" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
+        <a href="#" class="hover:underline text-offwhite">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS for mobile nav and dynamic year -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile nav with debugging
+    const mobileNavBtn = document.getElementById('mobileNavBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    
+    console.log('Mobile nav elements:', { mobileNavBtn, mobileNav, closeMobileNav });
+    
+    if (mobileNavBtn && mobileNav) {
+      mobileNavBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile nav button clicked');
+        mobileNav.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+      
+      // Handle keyboard navigation for span
+      mobileNavBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          mobileNav.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    } else {
+      console.error('Mobile nav elements not found');
+    }
+    
+    if (closeMobileNav && mobileNav) {
+      closeMobileNav.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Close mobile nav clicked');
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+      });
+    }
+    
+    // Close on background click
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          console.log('Background clicked, closing nav');
+          mobileNav.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
