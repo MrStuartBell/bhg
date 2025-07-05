@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Your Free Brutally Honest Guide | Brutal Guides™</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Inter+Tight:wght@700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/lucide-static@0.264.1/font/lucide.css">
+  <style>
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: #FFFEFB;
+      color: #1A1A1A;
+      transition: background 0.3s, color 0.3s;
+      margin: 0;
+      min-height: 100vh;
+    }
+    
+    /* CRITICAL: Force hamburger button styling - must be at top */
+    button[id="mobileNavBtn"] {
+      background-color: #ffffff !important;
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 2px solid #999999 !important;
+      border-radius: 6px !important;
+      padding: 10px !important;
+      width: 44px !important;
+      height: 44px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 18px !important;
+      font-weight: bold !important;
+      cursor: pointer !important;
+    }
+    button[id="mobileNavBtn"]:hover {
+      background-color: #f0f0f0 !important;
+      background: #f0f0f0 !important;
+      color: #A74D4B !important;
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      body {
+        background: #1A1A1A;
+        color: #FFFEFB;
+      }
+      .bg-offwhite { background: #1A1A1A !important; }
+      .text-black { color: #FFFEFB !important; }
+      .bg-black { background: #FFFEFB !important; }
+      .text-offwhite { color: #1A1A1A !important; }
+      .shadow-card { box-shadow: rgba(255,255,255,0.08) 0 0 10px !important; }
+      .border-red { border-color: #A74D4B !important;}
+      .landing-content { background: #1A1A1A !important; border-color: #333 !important; }
+      .benefit-item { background: #1A1A1A !important; border-color: #333 !important; }
+      .benefit-item h3 { color: #FFFEFB !important; }
+      .benefit-item p { color: #818B7F !important; }
+      /* Dark mode mobile menu */
+      @media (prefers-color-scheme: dark) {
+        #mobileNav div[style*="background-color:#ffffff"] {
+          background-color: #1a1a1a !important;
+        }
+        #mobileNav h3[style*="color:#000000"],
+        #mobileNav a[style*="color:#000000"],
+        #mobileNav button[style*="color:#000000"] {
+          color: #ffffff !important;
+        }
+        #mobileNav button[style*="background-color:#f5f5f5"] {
+          background-color: #333333 !important;
+        }
+        #mobileNav a[style*="border-color:#e5e5e5"] {
+          border-color: #333333 !important;
+        }
+      }
+      
+      /* Dark mode hamburger button */
+      @media (prefers-color-scheme: dark) {
+        button#mobileNavBtn { 
+          background: #333333 !important; 
+          color: #ffffff !important; 
+          border-color: #555555 !important; 
+        }
+        button#mobileNavBtn:hover { 
+          background: #444444 !important; 
+          color: #A74D4B !important; 
+        }
+      }
+    }
+    .font-condensed {
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      font-stretch: condensed;
+    }
+    .shadow-card {
+      box-shadow: rgba(0,0,0,0.08) 0 0 10px;
+    }
+    /* Force hamburger button styling */
+    button#mobileNavBtn {
+      background: #ffffff !important;
+      color: #000000 !important;
+      border: 1px solid #cccccc !important;
+      border-radius: 4px !important;
+      padding: 8px !important;
+      min-width: 40px !important;
+      min-height: 40px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    button#mobileNavBtn:hover {
+      background: #f5f5f5 !important;
+      color: #A74D4B !important;
+    }
+    
+    .btn {
+      border-radius: 8px;
+      font-weight: 500;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+      outline: 2px solid transparent;
+      outline-offset: 0;
+      box-shadow: none;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:focus-visible {
+      outline: 2px solid #818B7F;
+      outline-offset: 2px;
+    }
+    .btn-red {
+      background: #A74D4B;
+      color: #FFFEFB;
+      border: none;
+    }
+    .btn-red:hover, .btn-red:focus {
+      background: #922e2b;
+    }
+    .btn-outline-red {
+      background: #FFFEFB;
+      color: #A74D4B;
+      border: 2px solid #A74D4B;
+    }
+    .btn-outline-red:hover, .btn-outline-red:focus {
+      background: #A74D4B;
+      color: #FFFEFB;
+    }
+    .btn-offwhite {
+      background: #FFFEFB;
+      color: #1A1A1A;
+      border: none;
+    }
+    .btn-offwhite:hover, .btn-offwhite:focus {
+      background: #F3F2EF;
+      color: #A74D4B;
+    }
+    
+    /* Landing Page specific styles */
+    .landing-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 120px 20px 56px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+    .landing-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .hero-content h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1A1A1A;
+      margin: 0 0 24px 0;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+      line-height: 1.15;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #1A1A1A;
+      margin: 0 0 16px 0;
+      line-height: 1.6;
+    }
+    .hero-content ul {
+      font-size: 1.1rem;
+      color: #1A1A1A;
+      line-height: 1.6;
+    }
+    .hero-content ul li {
+      margin-bottom: 8px;
+    }
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .book-mockup {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(36,37,35,0.15);
+      background: linear-gradient(145deg, #A74D4B, #922e2b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFEFB;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      padding: 80px 40px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    
+    /* CTA Button Styling */
+    .cta-button {
+      background: #A74D4B;
+      color: #FFFEFB;
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 16px 48px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(167,77,75,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .cta-button:hover {
+      background: #922e2b;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(167,77,75,0.4);
+    }
+    
+    /* Benefits Section */
+    .benefits-section {
+      margin-top: 48px;
+    }
+    .benefits-title {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      color: #1A1A1A;
+      margin-bottom: 32px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .benefit-item {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 24px;
+      border: 1px solid #EBE9E3;
+      box-shadow: 0 2px 8px rgba(36,37,35,0.06);
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .benefit-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(36,37,35,0.08);
+    }
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      background: #A74D4B;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+      color: #FFFEFB;
+    }
+    .benefit-item h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .benefit-item p {
+      font-size: 1.02rem;
+      color: #818B7F;
+      line-height: 1.5;
+      margin: 0;
+    }
+    
+    /* Trust Indicators */
+    .trust-section {
+      text-align: center;
+      margin-top: 48px;
+      padding: 32px;
+      background: #F8F7F4;
+      border-radius: 12px;
+    }
+    .trust-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #818B7F;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .trust-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-stat {
+      text-align: center;
+    }
+    .trust-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #A74D4B;
+      display: block;
+      font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
+    }
+    .trust-label {
+      font-size: 0.9rem;
+      color: #818B7F;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .landing-hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        text-align: left;
+      }
+      .hero-image {
+        order: -1; /* Image appears above content on mobile */
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      .hero-content p {
+        font-size: 1.05rem;
+      }
+      .cta-button {
+        font-size: 1.1rem;
+        padding: 14px 32px;
+      }
+      .trust-stats {
+        gap: 32px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .landing-container {
+        padding-top: 100px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .hero-content h1 {
+        font-size: 1.75rem;
+        line-height: 1.2;
+      }
+      .hero-content p {
+        font-size: 1rem;
+      }
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      .trust-stats {
+        gap: 24px;
+        flex-direction: column;
+      }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=IBM+Plex+Serif:wght@300;400;500;600;700&amp;family=IBM+Plex+Mono:wght@300;400;500;600;700&amp;family=Inter&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-offwhite min-h-screen flex flex-col text-black tracking-normal" style="font-family:'Inter', Arial, sans-serif;">
+  <!-- NAV BAR -->
+  <header class="fixed top-0 left-0 w-full z-30 bg-offwhite shadow-sm border-b border-[#f6f5f2] backdrop-blur-sm h-16 flex items-center" style="height:64px;">
+    <div class="max-w-screen-xl mx-auto w-full flex items-center justify-between px-4">
+      <!-- Desktop: Left Logo, Desktop Nav Links + Button -->
+      <div class="hidden md:flex items-center justify-between w-full">
+        <!-- Logo (clickable to home) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-3xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Nav Links -->
+        <nav class="flex items-center gap-8 text-base font-medium">
+          <a href="/how-it-works" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">How It Works</a>
+          <a href="/pricing" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Pricing</a>
+          <a href="/faq" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">FAQ</a>
+          <a href="/contact" class="hover:text-[#A74D4B] transition-colors px-1 py-1 rounded">Contact</a>
+          <a href="https://calendly.com/mrstuartbell/bhg-start" class="ml-4 btn btn-red" style="border-radius:8px;">Get Started</a>
+        </nav>
+      </div>
+      
+      <!-- Mobile: Logo, Get Started Button, Hamburger -->
+      <div class="flex md:hidden items-center w-full">
+        <!-- Mobile Logo (Left side for spacing) -->
+        <a href="/" class="flex flex-col leading-none uppercase select-none text-xl font-bold text-black tracking-tight font-condensed hover:text-[#A74D4B] transition-colors flex-1" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </a>
+        <!-- Mobile Controls (Right side) -->
+        <div class="flex items-center gap-3">
+          <a href="https://calendly.com/mrstuartbell/bhg-start" class="btn btn-red text-sm px-3 py-2 whitespace-nowrap" style="border-radius:6px;">Get Started</a>
+          <span id="mobileNavBtn" role="button" tabindex="0" aria-label="Open menu" style="display:inline-block;width:44px;height:44px;line-height:44px;text-align:center;background-color:#ffffff;border:2px solid #666;border-radius:6px;cursor:pointer;font-size:18px;font-weight:bold;color:#000;user-select:none;">
+            ☰
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile drawer (solid backgrounds for visibility) -->
+    <div id="mobileNav" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[9999]" style="display:none;">
+      <div class="fixed top-0 right-0 h-full w-80 max-w-[90vw] shadow-2xl flex flex-col" style="background-color:#ffffff;">
+        <div class="flex justify-between items-center p-4 border-b" style="background-color:#ffffff;border-color:#e5e5e5;">
+          <h3 class="text-lg font-semibold" style="color:#000000;">Menu</h3>
+          <button id="closeMobileNav" class="p-2 rounded" style="color:#000000;background-color:#f5f5f5;min-width:40px;min-height:40px;">
+            ✕
+          </button>
+        </div>
+        <div class="flex flex-col p-6 gap-4 flex-1" style="background-color:#ffffff;">
+          <a href="/how-it-works" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">How It Works</a>
+          <a href="/pricing" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Pricing</a>
+          <a href="/faq" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">FAQ</a>
+          <a href="/contact" class="text-xl py-4 px-2 border-b font-medium" style="color:#000000;border-color:#e5e5e5;">Contact</a>
+          <a href="https://calendly.com/mrstuartbell/bhg-start" class="btn btn-red text-lg mt-4">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+      <!-- LANDING PAGE CONTENT -->
+  <section class="landing-container">
+    <!-- Hero Section -->
+    <div class="landing-hero">
+      <div class="hero-content">
+        <h1>Forget Vanity Publishing Projects... Here's How to Really Use a Book to Grab Attention, Build Authority, and Fill Your Schedule</h1>
+        
+        <p>Still thinking about writing a book to build your business?</p>
+        
+        <p>This no-nonsense Brutal Guide™ slashes through the publishing hype and shows you how to create a short, purposeful book as a lead magnet instead of a vanity project.</p>
+        
+        <p><strong>Get rid of:</strong></p>
+        <ul style="margin: 16px 0; padding-left: 20px; line-height: 1.6;">
+          <li style="margin-bottom: 8px;"><strong>Time-sucking 'author' rituals</strong> - ditch endless rewrites and launch in weeks, not years.</li>
+          <li style="margin-bottom: 8px;"><strong>Overpriced guru tactics</strong> that don't move the needle. Plug your book into a simple funnel that books calls while you sleep.</li>
+        </ul>
+        
+        <p style="font-weight: 600; color: #A74D4B;">Read it, apply it, and watch qualified prospects fill up your schedule.</p>
+        
+        <!-- CTA Button with Popup Script -->
+        <div style="margin-top: 32px;">
+          <button class="cta-button" id="downloadGuide">
+            Download Free Sample Guide
+          </button>
+        </div>
+        
+        <p style="font-size: 0.9rem; color: #818B7F; margin-top: 16px;">
+          ✓ No email required • ✓ Instant download • ✓ See our proven framework
+        </p>
+      </div>
+      
+      <div class="hero-image">
+        <img src="https://secure.gogoclients.com/userfiles/2348/landingpage/bhg001.png" 
+             alt="Brutally Honest Guide Book Cover" 
+             class="book-cover"
+             style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(36,37,35,0.15);">
+      </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <h2 class="benefits-title">What You'll Discover</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+          <h3>The 30-Chapter Framework</h3>
+          <p>See our exact blueprint for creating guides that answer every question your prospects are asking before they even know to ask.</p>
+        </div>
+        
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+            </svg>
+          </div>
+          <h3>Real Conversion Examples</h3>
+          <p>Study actual pages from successful guides that generated qualified leads for our clients in finance, law, and consulting.</p>
+        </div>
+        
+        <div class="benefit-item">
+          <div class="benefit-icon">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 11H7v6h2v-6zm4 0h-2v6h2v-6zm4 0h-2v6h2v-6zm2.5-9H18V0h-2v2H8V0H6v2H4.5C3.57 2 3 2.57 3 3.5v15c0 .93.57 1.5 1.5 1.5h15c.93 0 1.5-.57 1.5-1.5v-15c0-.93-.57-1.5-1.5-1.5zm-1 16h-13V6h13v12z"/>
+            </svg>
+          </div>
+          <h3>Behind-the-Scenes Process</h3>
+          <p>Learn how we research, structure, and write guides that position you as the obvious choice in your niche.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+      <h3 class="trust-title">Trusted by Serious Business Owners</h3>
+      <div class="trust-stats">
+        <div class="trust-stat">
+          <span class="trust-number">150+</span>
+          <span class="trust-label">Guides Created</span>
+        </div>
+        <div class="trust-stat">
+          <span class="trust-number">25%</span>
+          <span class="trust-label">Avg. Opt-in Rate</span>
+        </div>
+        <div class="trust-stat">
+          <span class="trust-number">30 Days</span>
+          <span class="trust-label">From Interview to Launch</span>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-offwhite bg-black mt-auto pt-12 pb-12">
+    <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-12">
+      <!-- Left: Logo + Blurb -->
+      <div class="flex-1 mb-8 md:mb-0">
+        <div class="uppercase text-lg font-bold tracking-tight font-condensed mb-2 text-[#FFFEFB]" style="font-family:'Inter Tight',Inter,Arial,sans-serif;line-height:1.1;">
+          BRUTAL<br>GUIDES™
+        </div>
+        <p class="max-w-xs text-sm text-[#818B7F]">Brutally honest, zero-fluff guides for business owners who demand leads, not vanity projects.</p>
+      </div>
+      <!-- Center: Navigation -->
+      <div class="flex-1 flex flex-col items-center gap-2">
+        <a href="https://calendly.com/mrstuartbell/bhg-start" class="btn btn-red w-40 mb-2 text-center text-offwhite">Get Started</a>
+        <nav class="flex flex-wrap gap-4 text-base justify-center" style="color:#FFFEFB;">
+          <a href="/how-it-works" class="hover:underline text-offwhite">How It Works</a>
+          <a href="/pricing" class="hover:underline text-offwhite">Pricing</a>
+          <a href="/faq" class="hover:underline text-offwhite">FAQ</a>
+          <a href="/about" class="hover:underline text-offwhite">About</a>
+          <a href="/contact" class="hover:underline text-offwhite">Contact</a>
+        </nav>
+      </div>
+      <!-- Right: Contact/Social -->
+      <div class="flex-1 flex flex-col gap-4 items-end" style="color:#FFFEFB;">
+        <a href="mailto:hello@brutalguides.com" class="hover:underline text-base text-offwhite">Contact Us</a>
+        <div class="flex gap-4">
+          <a href="#" title="Twitter" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="LinkedIn" class="hover:text-[#A74D4B] text-offwhite"></a>
+          <a href="#" title="Instagram" class="hover:text-[#A74D4B] text-offwhite"></a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-[#282828] pt-5 text-xs flex flex-col md:flex-row justify-between items-center gap-2">
+      <span>Copyright © <span id="year">2025</span> Brutal Guides™</span>
+      <div>
+        <a href="/privacy" class="hover:underline mr-4 text-offwhite">Privacy Policy</a>
+        <a href="/tos" class="hover:underline text-offwhite">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CRM Popup Script -->
+  <script id='acPopUpScript' src='https://secure.gogoclients.com/public/lp-embed/embed.js?k=6D17C75AB67421702511FE58C7A4AED4&b=6D17C75AB67421702511FE58C7A4AED4&e=secure.gogoclients.com'></script>
+
+  <!-- JS for mobile nav, dynamic year, and popup trigger -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Mobile nav with debugging
+    const mobileNavBtn = document.getElementById('mobileNavBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const closeMobileNav = document.getElementById('closeMobileNav');
+    
+    console.log('Mobile nav elements:', { mobileNavBtn, mobileNav, closeMobileNav });
+    
+    if (mobileNavBtn && mobileNav) {
+      mobileNavBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Mobile nav button clicked');
+        mobileNav.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      });
+      
+      // Handle keyboard navigation for span
+      mobileNavBtn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          mobileNav.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    
+    if (closeMobileNav && mobileNav) {
+      closeMobileNav.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log('Close mobile nav clicked');
+        mobileNav.style.display = 'none';
+        document.body.style.overflow = ''; // Restore scrolling
+      });
+    }
+    
+    // Close on background click
+    if (mobileNav) {
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          console.log('Background clicked, closing nav');
+          mobileNav.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    // CRM Popup Trigger
+    document.getElementById('downloadGuide').addEventListener('click', function(e) {
+      e.preventDefault();
+      // The popup script should be loaded and available
+      // Check if the popup function exists and trigger it
+      if (typeof window.acPopupOpen === 'function') {
+        window.acPopupOpen();
+      } else if (typeof window.openPopup === 'function') {
+        window.openPopup();
+      } else {
+        // Fallback - try to find and trigger any popup function
+        console.log('Attempting to trigger CRM popup...');
+        // You may need to adjust this based on the actual function name from the CRM
+        if (window.lpEmbed && window.lpEmbed.openPopup) {
+          window.lpEmbed.openPopup();
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
