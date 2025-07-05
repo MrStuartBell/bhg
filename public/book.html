@@ -164,47 +164,55 @@
       padding: 120px 20px 56px 20px;
       display: flex;
       flex-direction: column;
-      gap: 56px;
+      gap: 48px;
     }
-    .landing-hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      margin-bottom: 32px;
+    .landing-headline {
+      text-align: center;
+      margin-bottom: 40px;
     }
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .hero-content h1 {
-      font-size: 2.5rem;
+    .landing-headline h1 {
+      font-size: 2.75rem;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: #1A1A1A;
-      margin: 0 0 24px 0;
+      margin: 0;
       font-family: 'Inter Tight', 'Inter', Arial, sans-serif;
       line-height: 1.15;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .hero-content p {
-      font-size: 1.1rem;
-      color: #1A1A1A;
-      margin: 0 0 16px 0;
-      line-height: 1.6;
-    }
-    .hero-content ul {
-      font-size: 1.1rem;
-      color: #1A1A1A;
-      line-height: 1.6;
-    }
-    .hero-content ul li {
-      margin-bottom: 8px;
+    .landing-hero {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 48px;
+      align-items: flex-start;
+      margin-bottom: 32px;
     }
     .hero-image {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #1A1A1A;
+      margin: 0 0 8px 0;
+      line-height: 1.5;
+    }
+    .hero-content ul {
+      font-size: 1.1rem;
+      color: #1A1A1A;
+      line-height: 1.5;
+      margin: 8px 0 12px 0;
+      padding-left: 20px;
+    }
+    .hero-content ul li {
+      margin-bottom: 4px;
     }
     .book-mockup {
       width: 100%;
@@ -343,16 +351,19 @@
     
     /* Responsive Design */
     @media (max-width: 768px) {
+      .landing-headline h1 {
+        font-size: 2.25rem;
+      }
       .landing-hero {
         grid-template-columns: 1fr;
-        gap: 32px;
-        text-align: left;
+        gap: 24px;
       }
       .hero-image {
         order: -1; /* Image appears above content on mobile */
+        justify-content: center;
       }
-      .hero-content h1 {
-        font-size: 2rem;
+      .hero-image img {
+        max-width: 280px !important;
       }
       .hero-content p {
         font-size: 1.05rem;
@@ -372,12 +383,15 @@
         padding-left: 16px;
         padding-right: 16px;
       }
-      .hero-content h1 {
-        font-size: 1.75rem;
+      .landing-headline h1 {
+        font-size: 1.85rem;
         line-height: 1.2;
       }
       .hero-content p {
         font-size: 1rem;
+      }
+      .hero-image img {
+        max-width: 240px !important;
       }
       .benefits-grid {
         grid-template-columns: 1fr;
@@ -448,40 +462,43 @@
 
       <!-- LANDING PAGE CONTENT -->
   <section class="landing-container">
-    <!-- Hero Section -->
+    <!-- Full Width Headline -->
+    <header class="landing-headline">
+      <h1>Forget Vanity Publishing Projects...<br>Here's How to Really Use a Book to Grab Attention, Build Authority, and Fill Your Schedule</h1>
+    </header>
+
+    <!-- Hero Section with Image Left, Content Right -->
     <div class="landing-hero">
+      <div class="hero-image">
+        <img src="https://mrstuartbell.s3.amazonaws.com/bhg_assets/bhg001_cover3d.png" 
+             alt="Brutally Honest Guide Book Cover" 
+             class="book-cover"
+             style="width: 100%; max-width: 320px; height: auto; border-radius: 8px; box-shadow: 0 20px 40px rgba(36,37,35,0.12);">
+      </div>
+      
       <div class="hero-content">
-        <h1>Forget Vanity Publishing Projects... Here's How to Really Use a Book to Grab Attention, Build Authority, and Fill Your Schedule</h1>
-        
         <p>Still thinking about writing a book to build your business?</p>
         
         <p>This no-nonsense Brutal Guide™ slashes through the publishing hype and shows you how to create a short, purposeful book as a lead magnet instead of a vanity project.</p>
         
         <p><strong>Get rid of:</strong></p>
-        <ul style="margin: 16px 0; padding-left: 20px; line-height: 1.6;">
-          <li style="margin-bottom: 8px;"><strong>Time-sucking 'author' rituals</strong> - ditch endless rewrites and launch in weeks, not years.</li>
-          <li style="margin-bottom: 8px;"><strong>Overpriced guru tactics</strong> that don't move the needle. Plug your book into a simple funnel that books calls while you sleep.</li>
+        <ul>
+          <li><strong>Time-sucking 'author' rituals</strong> - ditch endless rewrites and launch in weeks, not years.</li>
+          <li><strong>Overpriced guru tactics</strong> that don't move the needle. Plug your book into a simple funnel that books calls while you sleep.</li>
         </ul>
         
         <p style="font-weight: 600; color: #A74D4B;">Read it, apply it, and watch qualified prospects fill up your schedule.</p>
         
         <!-- CTA Button with Popup Script -->
-        <div style="margin-top: 32px;">
+        <div style="margin-top: 24px;">
           <button class="cta-button" id="downloadGuide">
             Download Free Sample Guide
           </button>
         </div>
         
-        <p style="font-size: 0.9rem; color: #818B7F; margin-top: 16px;">
-          ✓ No email required • ✓ Instant download • ✓ See our proven framework
+        <p style="font-size: 0.9rem; color: #818B7F; margin-top: 12px;">
+          ✓ Instant download ✓ See our proven framework at work
         </p>
-      </div>
-      
-      <div class="hero-image">
-        <img src="https://secure.gogoclients.com/userfiles/2348/landingpage/bhg001.png" 
-             alt="Brutally Honest Guide Book Cover" 
-             class="book-cover"
-             style="width: 100%; max-width: 400px; height: auto; border-radius: 8px; box-shadow: 0 20px 60px rgba(36,37,35,0.15);">
       </div>
     </div>
 
@@ -526,8 +543,8 @@
       <h3 class="trust-title">Trusted by Serious Business Owners</h3>
       <div class="trust-stats">
         <div class="trust-stat">
-          <span class="trust-number">150+</span>
-          <span class="trust-label">Guides Created</span>
+          <span class="trust-number">1,100+</span>
+          <span class="trust-label">Books Created</span>
         </div>
         <div class="trust-stat">
           <span class="trust-number">25%</span>
