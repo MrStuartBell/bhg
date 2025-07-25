@@ -283,7 +283,7 @@
     Let's add your voice and start collecting leads
   </h2><div class="flex flex-col sm:flex-row gap-4 w-full slide-up delay-400" style="flex-wrap: nowrap;">
     <a href="https://calendly.com/mrstuartbell/bhg-niche" class="btn btn-red flex-1 text-lg text-center" style="display:flex; align-items:center; justify-content:center;">15 min Niche Finder Call</a>
-    <a href="#download" class="btn btn-outline-red flex-1 text-lg text-center flex items-center justify-center">DOWNLOAD: A Brutally Honest Guide™ To Using A Book To Get Clients</a>
+    <button onclick="showGHLPopup()" class="btn btn-outline-red flex-1 text-lg text-center flex items-center justify-center">DOWNLOAD: A Brutally Honest Guide™ To Using A Book To Get Clients</button>
   </div><p class="text-lg font-normal text-[#818B7F] text-center mt-7"><b>Your unfair advantage:</b> A done-for-you book and funnel. <br>Built from our research and your experience to create an irresistible lead magnet.<br>While others churn out generic AI content, you'll be connecting prospects with something real, so by the time they click, they're ready.</p></div>
   </section>
 
@@ -453,7 +453,7 @@
     <div class="max-w-screen-xl mr-auto ml-auto flex justify-center">
       <div class="flex flex-col sm:flex-row gap-4 w-full slide-up delay-400" style="max-width:80%;">
         <a href="https://calendly.com/mrstuartbell/bhg-niche" class="btn btn-red flex-1 text-lg text-center" style="display:flex; align-items:center; justify-content:center;">15 min Niche Finder Call</a>
-        <a href="#download" class="btn btn-outline-red flex-1 text-lg text-center flex items-center justify-center">A Brutally Honest Guide™ To Using A Book To Get Clients</a>
+        <button onclick="showGHLPopup()" class="btn btn-outline-red flex-1 text-lg text-center flex items-center justify-center">A Brutally Honest Guide™ To Using A Book To Get Clients</button>
       </div>
     </div>
   </section>
@@ -635,49 +635,52 @@
     </div>
   </footer>
 
-  <!-- JS for mobile nav, dynamic year, and carousel -->
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Mobile nav with debugging
-    const mobileNavBtn = document.getElementById('mobileNavBtn');
-    const mobileNav = document.getElementById('mobileNav');
-    const closeMobileNav = document.getElementById('closeMobileNav');
-    
-    if (mobileNavBtn && mobileNav) {
-      mobileNavBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        mobileNav.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
-      });
-      
-      // Handle keyboard navigation for span
-      mobileNavBtn.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          mobileNav.style.display = 'block';
-          document.body.style.overflow = 'hidden';
-        }
-      });
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// GHL Popup Function - TEST VERSION
+function showGHLPopup() {
+  alert('Button clicked! Function is working.');
+}
+
+// Mobile nav with debugging  
+const mobileNavBtn = document.getElementById('mobileNavBtn');
+const mobileNav = document.getElementById('mobileNav');
+const closeMobileNav = document.getElementById('closeMobileNav');
+
+if (mobileNavBtn && mobileNav) {
+  mobileNavBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    mobileNav.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  });
+  
+  mobileNavBtn.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      mobileNav.style.display = 'block';
+      document.body.style.overflow = 'hidden';
     }
-    
-    if (closeMobileNav && mobileNav) {
-      closeMobileNav.addEventListener('click', function(e) {
-        e.preventDefault();
-        mobileNav.style.display = 'none';
-        document.body.style.overflow = ''; // Restore scrolling
-      });
+  });
+}
+
+if (closeMobileNav && mobileNav) {
+  closeMobileNav.addEventListener('click', function(e) {
+    e.preventDefault();
+    mobileNav.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+}
+
+if (mobileNav) {
+  mobileNav.addEventListener('click', function(e) {
+    if (e.target === mobileNav) {
+      mobileNav.style.display = 'none';
+      document.body.style.overflow = '';
     }
-    
-    // Close on background click
-    if (mobileNav) {
-      mobileNav.addEventListener('click', function(e) {
-        if (e.target === mobileNav) {
-          mobileNav.style.display = 'none';
-          document.body.style.overflow = '';
-        }
-      });
-    }
-  </script>
+  });
+}
+</script>
+
 
 </body></html>
